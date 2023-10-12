@@ -12,7 +12,20 @@ ggplot(CAA_202310, aes(x = 1, fill = `Do.you.know.what.Agent.Based.Modeling.is.`
   scale_fill_discrete(name = "I know what ABM is")
 ggsave("export/know_ABM_pie.png")
 
-# COmputer skills
+# Theory on ABM
+
+CAA_202310 %>%
+  select(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`) %>%
+  filter(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`!="") %>%
+  mutate(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.` =
+           fct_relevel(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`,
+                       "No opinion", "Limited", "More than sufficient", "Sufficient")) %>%
+  ggplot(aes(x = `How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`)) +
+  geom_bar() + xlab("Quality of theory on ABM") + coord_flip() +
+  scale_y_continuous(breaks=c(0,2,4,6,8, 10))
+ggsave("export/theory_ABM.png")
+
+# Computer skills
 
 CAA_202310$Which.computer.skills.do.you.have....Selected.Choice <- gsub("Other, please describe:", "Other", CAA_202310$Which.computer.skills.do.you.have....Selected.Choice)
 
