@@ -18,6 +18,7 @@ post_surveys$How.would.you.rate.the.teaching.material.[post_surveys$How.would.yo
 post_surveys$How.would.you.rate.the.workshop.in.general.[post_surveys$How.would.you.rate.the.workshop.in.general.=="Sufficent"] <- "Sufficient"
 post_surveys$How.would.you.rate.the.trainers.teachers.[post_surveys$How.would.you.rate.the.trainers.teachers.=="Sufficent"] <- "Sufficient"
 
+write.csv(post_surveys, "data/post_workshop_surveys.csv")
 
 factor_levels <- c("Excellent", "Good", "Sufficient", "Insufficient")
 
