@@ -1,0 +1,52 @@
+---
+title: "Lessons learned: creating tutorials teaching Agent-Based Modelling for Archaeologists"
+author: "Ronald Visser"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+ABM application increased in Archaeology
+
+No formal training
+
+EU project
+
+# Method
+
+Tutorials developed
+
+Testing on conferences
+
+Survey before and after the workshop
+
+Qualtrics
+
+R + packages
+
+Open data: Github / Zenodo
+
+Website
+
+# Results
+
+## Tutorials
+
+## Before tutorial
+
+## After tutorial
+
+## Final tutorials
+
+## Dissemination of tutorials
+
+# Conclusion
+
+Lessons learned
+
+Future aspects

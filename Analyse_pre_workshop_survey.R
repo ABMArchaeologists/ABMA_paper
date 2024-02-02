@@ -1,4 +1,7 @@
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(forcats)
 
 CAA_202304 <- read.csv("data/CAA_202304.csv")
 CAA_202304$Workshop <- "202304_CAA"
@@ -6,6 +9,8 @@ EAA_202308 <- read.csv("data/EAA_202308.csv")
 EAA_202308$Workshop <- "202308_EAA"
 CAADENLFl_202310 <- read.csv("data/CAADENLFl_202310.csv")
 CAADENLFl_202310$Workshop <- "202310_CAA-DE-NLFl"
+Reuvensdagen_202311 <- read.csv("data/Reuvensdagen_202311.csv")
+Reuvensdagen_202311$Workshop <- "202311_Reuvensdagen"
 CAAUK_202311 <- read.csv("data/CAAUK_202311.csv")
 CAAUK_202311$Workshop <- "202311_CAA-UK"
 Leiden_202312 <- read.csv("data/Leiden_202312.csv")
@@ -13,7 +18,7 @@ Leiden_202312$Workshop <- "202312_Leiden"
 Aarhus_202401 <- read.csv("data/Aarhus_online_202401.csv")
 Aarhus_202401$Workshop <- "202401_Aarhus"
 
-pre_surveys <-rbind(CAA_202304, EAA_202308, CAADENLFl_202310, CAAUK_202311, Leiden_202312, Aarhus_202401)
+pre_surveys <-rbind(CAA_202304, EAA_202308, CAADENLFl_202310, Reuvensdagen_202311, CAAUK_202311, Leiden_202312, Aarhus_202401)
 
 write.csv(pre_surveys, "data/pre_workshop_surveys.csv")
 
@@ -26,7 +31,7 @@ ggsave("export/preworkshop/ABM_known_pie.png")
 
 ggplot(pre_surveys, aes(x = `Do.you.know.what.Agent.Based.Modeling.is.`)) +
   geom_bar() + xlab("I know what ABM is") + facet_grid(~Workshop)
-ggsave("export/preworkshop/ABM_known_facet.png", width = 10)
+ggsave("export/preworkshop/ABM_known_facet.png", width = 12)
 
 # Theory on ABM
 
@@ -49,7 +54,7 @@ pre_surveys %>%
   ggplot(aes(x = `How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`)) +
   geom_bar() + xlab("Quality of theory on ABM") + coord_flip() +
   facet_grid(~Workshop) #+ scale_y_continuous(breaks=c(0,2,4,6,8,10))
-ggsave("export/preworkshop/ABM_theory_quality_facet.png", width = 10)
+ggsave("export/preworkshop/ABM_theory_quality_facet.png", width = 12)
 
 # ABM software
 
@@ -71,7 +76,7 @@ pre_surveys %>%
   group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   ggplot(aes(x=`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`)) + geom_bar() +
   xlab("ABM Software known") + coord_flip() + facet_grid(~Workshop)
-ggsave("export/preworkshop/ABM_software_knownfacet.png", width = 10)
+ggsave("export/preworkshop/ABM_software_knownfacet.png", width = 12)
 
 # ABM Applied
 
@@ -86,7 +91,7 @@ ggplot(pre_surveys[!is.na(pre_surveys$Have.you.ever.applied.Agent.Based.Modellin
   geom_bar() + xlab("Applied ABM before")  +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
   facet_grid(~Workshop)
-ggsave("export/preworkshop/ABM_applied_before_facet.png", width = 10)
+ggsave("export/preworkshop/ABM_applied_before_facet.png", width = 12)
 
 # Computer skills
 
@@ -107,7 +112,7 @@ pre_surveys %>%
   group_by(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
   ggplot(aes(x=`Which.computer.skills.do.you.have....Selected.Choice`)) + geom_bar() +
   xlab("Computer skills") + coord_flip() + facet_grid(~Workshop)
-ggsave("export/preworkshop/computer_skills_facet.png", width = 10)
+ggsave("export/preworkshop/computer_skills_facet.png", width = 12)
 
 
 # Gender
@@ -122,7 +127,7 @@ ggplot(pre_surveys, aes(x = `What.is.your.gender....Selected.Choice`)) +
   geom_bar() + xlab("Gender")  +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
   facet_grid(~Workshop)
-ggsave("export/preworkshop/gender_bar_facet.png", width = 10)
+ggsave("export/preworkshop/gender_bar_facet.png", width = 12)
 
 
 # age
@@ -138,7 +143,7 @@ ggsave("export/preworkshop/age_classes.png")
 ggplot(pre_surveys, aes(x = `What.is.your.age.`)) +
   geom_bar() + xlab("Age") + facet_grid(~Workshop) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("export/preworkshop/age_classes_facet.png", width = 10)
+ggsave("export/preworkshop/age_classes_facet.png", width = 12)
 
 
 #nationality
@@ -157,6 +162,7 @@ pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.yo
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="nl"] <- "Dutch"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Netherlands"] <- "Dutch"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Dutch "] <- "Dutch"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Dutch and Israeli"] <- "Dutch"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="israel"] <- "Israeli"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="italian"] <- "Italian"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Italy"] <- "Italian"
@@ -181,8 +187,9 @@ ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
 ggsave("export/preworkshop/nationality.png")
 
 ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
-  geom_bar() +  coord_flip() + xlab("Nationality") + facet_grid(~Workshop)
-ggsave("export/preworkshop/nationality.png", width = 10)
+  geom_bar() +  coord_flip() + xlab("Nationality") + scale_y_continuous(breaks=c(0,5,10)) +
+  facet_grid(~Workshop)
+ggsave("export/preworkshop/nationality_facet.png", width = 12)
 
 
 # student
@@ -197,5 +204,5 @@ ggsave("export/preworkshop/student_working_pie.png")
 ggplot(pre_surveys, aes(x = `Which.of.the.option.below.applies.to.you.`)) +
   geom_bar() +  facet_grid(~Workshop) + xlab("Student or working") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("export/preworkshop/student_working_bar_facet.png", width = 10)
+ggsave("export/preworkshop/student_working_bar_facet.png", width = 12)
 

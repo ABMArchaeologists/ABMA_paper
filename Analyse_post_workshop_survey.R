@@ -1,4 +1,7 @@
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(lubridate)
+library(forcats)
 
 post_surveys <- read.csv("data/ABM_post_workshop_survey.csv")
 
@@ -17,6 +20,9 @@ post_surveys$Workshop[date(post_surveys$Start.Date)>="2024-01-22"]  <- "202401_A
 post_surveys$How.would.you.rate.the.teaching.material.[post_surveys$How.would.you.rate.the.teaching.material.=="Sufficent"] <- "Sufficient"
 post_surveys$How.would.you.rate.the.workshop.in.general.[post_surveys$How.would.you.rate.the.workshop.in.general.=="Sufficent"] <- "Sufficient"
 post_surveys$How.would.you.rate.the.trainers.teachers.[post_surveys$How.would.you.rate.the.trainers.teachers.=="Sufficent"] <- "Sufficient"
+
+drop_privacy <- c("IP.Address","Recipient.Last.Name","Recipient.First.Name","Recipient.Email","External.Data.Reference", "Location.Latitude", "Location.Longitude","User.Language")
+post_surveys <- post_surveys[,!(names(post_surveys) %in% drop_privacy)]
 
 write.csv(post_surveys, "data/post_workshop_surveys.csv")
 
