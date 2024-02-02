@@ -9,9 +9,11 @@ CAADENLFl_202310$Workshop <- "202310_CAA-DE-NLFl"
 CAAUK_202311 <- read.csv("data/CAAUK_202311.csv")
 CAAUK_202311$Workshop <- "202311_CAA-UK"
 Leiden_202312 <- read.csv("data/Leiden_202312.csv")
-Leiden_202312$Workshop <- "Leiden_202312"
+Leiden_202312$Workshop <- "202312_Leiden"
+Aarhus_202401 <- read.csv("data/Aarhus_online_202401.csv")
+Aarhus_202401$Workshop <- "202401_Aarhus"
 
-pre_surveys <-rbind(CAA_202304, EAA_202308, CAADENLFl_202310, CAAUK_202311, Leiden_202312)
+pre_surveys <-rbind(CAA_202304, EAA_202308, CAADENLFl_202310, CAAUK_202311, Leiden_202312, Aarhus_202401)
 
 write.csv(pre_surveys, "data/pre_workshop_surveys.csv")
 
@@ -24,7 +26,7 @@ ggsave("export/preworkshop/ABM_known_pie.png")
 
 ggplot(pre_surveys, aes(x = `Do.you.know.what.Agent.Based.Modeling.is.`)) +
   geom_bar() + xlab("I know what ABM is") + facet_grid(~Workshop)
-ggsave("export/preworkshop/ABM_known_facet.png")
+ggsave("export/preworkshop/ABM_known_facet.png", width = 10)
 
 # Theory on ABM
 
@@ -33,22 +35,21 @@ pre_surveys %>%
   filter(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`!="") %>%
   mutate(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.` =
            fct_relevel(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`,
-                       "No opinion", "Limited", "More than sufficient", "Sufficient")) %>%
+                       "No opinion", "Limited", "Sufficient", "More than sufficient", "Very good")) %>%
   ggplot(aes(x = `How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`)) +
   geom_bar() + xlab("Quality of theory on ABM") + coord_flip() #+ scale_y_continuous(breaks=c(0,2,4,6,8,10))
 ggsave("export/preworkshop/ABM_theory_quality.png")
-# check factor volgorde
 
 pre_surveys %>%
   select(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`, Workshop) %>%
   filter(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`!="") %>%
   mutate(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.` =
            fct_relevel(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`,
-                       "No opinion", "Limited", "More than sufficient", "Sufficient")) %>%
+                       "No opinion", "Limited", "Sufficient", "More than sufficient", "Very good")) %>%
   ggplot(aes(x = `How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`)) +
   geom_bar() + xlab("Quality of theory on ABM") + coord_flip() +
   facet_grid(~Workshop) #+ scale_y_continuous(breaks=c(0,2,4,6,8,10))
-ggsave("export/preworkshop/ABM_theory_quality_facet.png")
+ggsave("export/preworkshop/ABM_theory_quality_facet.png", width = 10)
 
 # ABM software
 
@@ -61,7 +62,6 @@ pre_surveys %>%
   group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   ggplot(aes(x=`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`)) + geom_bar() +
   xlab("ABM Software known") + coord_flip()
-
 ggsave("export/preworkshop/ABM_software_known.png")
 
 pre_surveys %>%
@@ -71,8 +71,7 @@ pre_surveys %>%
   group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   ggplot(aes(x=`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`)) + geom_bar() +
   xlab("ABM Software known") + coord_flip() + facet_grid(~Workshop)
-
-ggsave("export/preworkshop/ABM_software_knownfacet.png")
+ggsave("export/preworkshop/ABM_software_knownfacet.png", width = 10)
 
 # ABM Applied
 
@@ -87,7 +86,7 @@ ggplot(pre_surveys[!is.na(pre_surveys$Have.you.ever.applied.Agent.Based.Modellin
   geom_bar() + xlab("Applied ABM before")  +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
   facet_grid(~Workshop)
-ggsave("export/preworkshop/ABM_applied_before_facet.png")
+ggsave("export/preworkshop/ABM_applied_before_facet.png", width = 10)
 
 # Computer skills
 
@@ -108,8 +107,7 @@ pre_surveys %>%
   group_by(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
   ggplot(aes(x=`Which.computer.skills.do.you.have....Selected.Choice`)) + geom_bar() +
   xlab("Computer skills") + coord_flip() + facet_grid(~Workshop)
-
-ggsave("export/preworkshop/computer_skills_facet.png")
+ggsave("export/preworkshop/computer_skills_facet.png", width = 10)
 
 
 # Gender
@@ -124,7 +122,7 @@ ggplot(pre_surveys, aes(x = `What.is.your.gender....Selected.Choice`)) +
   geom_bar() + xlab("Gender")  +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
   facet_grid(~Workshop)
-ggsave("export/preworkshop/gender_bar_facet.png")
+ggsave("export/preworkshop/gender_bar_facet.png", width = 10)
 
 
 # age
@@ -140,7 +138,7 @@ ggsave("export/preworkshop/age_classes.png")
 ggplot(pre_surveys, aes(x = `What.is.your.age.`)) +
   geom_bar() + xlab("Age") + facet_grid(~Workshop) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("export/preworkshop/age_classes_facet.png")
+ggsave("export/preworkshop/age_classes_facet.png", width = 10)
 
 
 #nationality
@@ -149,6 +147,11 @@ pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.yo
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="United States of America"] <- "American"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="American "] <- "American"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="UK (Scotland)"] <- "British"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="UK"] <- "British"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="British / Danish"] <- "British"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="British/Canadian"] <- "British"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="British/Canadian "] <- "British"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Brazil"] <- "Brazilian"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Spain"] <- "Spanish"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Polish "] <- "Polish"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="nl"] <- "Dutch"
@@ -159,6 +162,7 @@ pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.yo
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Italy"] <- "Italian"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Hungary"] <- "Hungarian"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Hungarian "] <- "Hungarian"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Hungary "] <- "Hungarian"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="greek"] <- "Greek"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Germany"] <- "German"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="german"] <- "German"
@@ -166,6 +170,11 @@ pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.yo
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Belgium"] <- "Belgian"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Belgium "] <- "Belgian"
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Belg"] <- "Belgian"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="czech"] <- "Czech"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="cz"] <- "Czech"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Argentinian/Venezuelan/Italian"] <- "Argentinian"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Austrian"] <- "Austrian"
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="New Zealand"] <- "New Zealander"
 
 ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
   geom_bar() +  coord_flip() + xlab("Nationality")
@@ -173,7 +182,7 @@ ggsave("export/preworkshop/nationality.png")
 
 ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
   geom_bar() +  coord_flip() + xlab("Nationality") + facet_grid(~Workshop)
-ggsave("export/preworkshop/nationality.png")
+ggsave("export/preworkshop/nationality.png", width = 10)
 
 
 # student
@@ -188,5 +197,5 @@ ggsave("export/preworkshop/student_working_pie.png")
 ggplot(pre_surveys, aes(x = `Which.of.the.option.below.applies.to.you.`)) +
   geom_bar() +  facet_grid(~Workshop) + xlab("Student or working") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("export/preworkshop/student_working_bar_facet.png")
+ggsave("export/preworkshop/student_working_bar_facet.png", width = 10)
 

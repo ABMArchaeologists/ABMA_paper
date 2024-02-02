@@ -10,6 +10,8 @@ post_surveys$Workshop[date(post_surveys$Start.Date)=="2023-11-16"]  <- "202311_R
 post_surveys$Workshop[date(post_surveys$Start.Date)=="2023-11-24"]  <- "202311_CAA_UK"
 post_surveys$Workshop[date(post_surveys$Start.Date)=="2023-12-12"]  <- "202312_Leiden"
 post_surveys$Workshop[date(post_surveys$Start.Date)=="2023-12-13"]  <- "202312_Leiden"
+post_surveys$Workshop[date(post_surveys$Start.Date)>="2024-01-22"]  <- "202401_Aarhus"
+
 
 #correct typos in the survey
 post_surveys$How.would.you.rate.the.teaching.material.[post_surveys$How.would.you.rate.the.teaching.material.=="Sufficent"] <- "Sufficient"
@@ -31,7 +33,7 @@ post_surveys %>%
   ggplot(aes(x=How.would.you.rate.the.workshop.in.general.)) + geom_bar() +
   xlab("Rating of the workshop") + facet_grid(~Workshop) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("export/postworkshop/rating_workshop_facet.png")
+ggsave("export/postworkshop/rating_workshop_facet.png", width = 10)
 
 # rating teaching material
 post_surveys %>%
@@ -45,7 +47,7 @@ post_surveys %>%
   ggplot(aes(x=How.would.you.rate.the.teaching.material.)) + geom_bar() +
   xlab("Rating of the teaching material") + facet_grid(~Workshop) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("export/postworkshop/rating_teaching_material_facet.png")
+ggsave("export/postworkshop/rating_teaching_material_facet.png", width = 10)
 
 # rating teachers
 post_surveys %>%
@@ -59,7 +61,7 @@ post_surveys %>%
   ggplot(aes(x=How.would.you.rate.the.trainers.teachers.)) + geom_bar() +
   xlab("Rating of the teacher") + facet_grid(~Workshop) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("export/postworkshop/rating_workshop_facet.png")
+ggsave("export/postworkshop/rating_workshop_facet.png", width = 10)
 
 # Apply ABM in the future?
 
@@ -83,5 +85,6 @@ post_surveys %>%
   theme(axis.title.x=element_blank(),
           axis.text.x=element_blank(),
           axis.ticks.x=element_blank(), legend.position="bottom")
-ggsave("export/postworkshop/ABM_future_apply_face.png")
+ggsave("export/postworkshop/ABM_future_apply_face.png", width = 10)
+
 
