@@ -2,6 +2,7 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(forcats)
+library(stringr)
 
 CAA_202304 <- read.csv("data/CAA_202304.csv")
 CAA_202304$Workshop <- "202304_CAA"
@@ -20,7 +21,38 @@ Aarhus_202401$Workshop <- "202401_Aarhus"
 
 pre_surveys <-rbind(CAA_202304, EAA_202308, CAADENLFl_202310, Reuvensdagen_202311, CAAUK_202311, Leiden_202312, Aarhus_202401)
 
+# correct different spellings of nationalities
+replace_nationality <- c("USA" = "American", "United States of America" = "American", "American " = "American",
+                         "UK (Scotland)" = "British", "UK" = "British", "British / Danish" = "British",
+                         "British/Canadian" = "British", "British/Canadian " = "British", "Brazil" = "Brazilian",
+                         "Spain" = "Spanish", "Polish " = "Polish", "nl" = "Dutch",
+                         "NL" = "Dutch", "Nl" = "Dutch", "Netherlands" = "Dutch",
+                         "Nederlands" = "Dutch", "Dutch " = "Dutch", "Ditch" = "Dutch",
+                         "Dutch and Israeli" = "Dutch", "israel" = "Israeli", "italian" = "Italian",
+                         "Italy" = "Italian", "Hungary" = "Hungarian", "Hungarian " = "Hungarian",
+                         "Hungary " = "Hungarian", "greek" = "Greek", "Germany" = "German",
+                         "german" = "German","China" = "Chinese", "Belgium" = "Belgian",
+                         "Belgium " = "Belgian", "Belg" = "Belgian", "czech" = "Czech",
+                         "cz" = "Czech", "Argentinian/Venezuelan/Italian" = "Argentinian", "Austrian" = "Austrian",
+                         "New Zealand" = "New Zealander", "INDIAN" = "Indian", "CZ" = "Czech",
+                         "Belgianian" = "Belgian", "Albanian " = "Albanian", "British(Scotland)" = "British",
+                         "Brazilianian" = "Brazilian", "Dutchand Israeli" = "Dutch", "Macedonian " = "Macedonian",
+                         "New Zealanderer" = "New Zealander", "British " = "British", "Egyptian " = "Egyptian",
+                         "English" = "British")
+pre_surveys$What.is.you.nationality....Nationality...Text <- str_replace_all(pre_surveys$What.is.you.nationality....Nationality...Text, replace_nationality)
+pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text==""] <- "_not shared_"
+
+# age data correction
+pre_surveys$What.is.your.age.[pre_surveys$What.is.your.age.==""] <- "Not shared"
+pre_surveys$What.is.your.age.[pre_surveys$What.is.your.age.=="Prefer not to share this"] <- "Not shared"
+pre_surveys$What.is.your.age.[pre_surveys$What.is.your.age.=="Over 71 years"] <- "71 years or older"
+
+# gender fill blanks
+pre_surveys$What.is.your.gender....Selected.Choice[pre_surveys$What.is.your.gender....Selected.Choice==""] <- "Not shared"
+
 write.csv(pre_surveys, "data/pre_workshop_surveys.csv")
+saveRDS(pre_surveys, "data/pre_workshop_surveys.rds")
+readRDS("data/pre_workshop_surveys.rds")
 
 # do you know ABM
 
@@ -116,7 +148,6 @@ ggsave("export/preworkshop/computer_skills_facet.png", width = 12)
 
 
 # Gender
-pre_surveys$What.is.your.gender....Selected.Choice[pre_surveys$What.is.your.gender....Selected.Choice==""] <- "Not shared"
 
 ggplot(pre_surveys, aes(x = 1, fill = `What.is.your.gender....Selected.Choice`)) +
   geom_bar() + xlab("Gender") + coord_polar(theta = "y", start=0) + theme_void() +
@@ -131,10 +162,6 @@ ggsave("export/preworkshop/gender_bar_facet.png", width = 12)
 
 
 # age
-pre_surveys$What.is.your.age.[pre_surveys$What.is.your.age.==""] <- "Not shared"
-pre_surveys$What.is.your.age.[pre_surveys$What.is.your.age.=="Prefer not to share this"] <- "Not shared"
-pre_surveys$What.is.your.age.[pre_surveys$What.is.your.age.=="Over 71 years"] <- "71 years or older"
-
 ggplot(pre_surveys, aes(x = `What.is.your.age.`)) +
   geom_bar() + xlab("Age") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
@@ -145,45 +172,14 @@ ggplot(pre_surveys, aes(x = `What.is.your.age.`)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ggsave("export/preworkshop/age_classes_facet.png", width = 12)
 
+# age and gender
+ggplot(pre_surveys, aes(x = `What.is.your.age.`, fill = `What.is.your.gender....Selected.Choice`)) +
+  geom_bar() + xlab("Age") + facet_grid(~Workshop) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ggsave("export/preworkshop/age_classes_gender_facet.png", width = 12)
+
 
 #nationality
-
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="USA"] <- "American"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="United States of America"] <- "American"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="American "] <- "American"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="UK (Scotland)"] <- "British"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="UK"] <- "British"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="British / Danish"] <- "British"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="British/Canadian"] <- "British"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="British/Canadian "] <- "British"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Brazil"] <- "Brazilian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Spain"] <- "Spanish"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Polish "] <- "Polish"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="nl"] <- "Dutch"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="NL"] <- "Dutch"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Nl"] <- "Dutch"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Netherlands"] <- "Dutch"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Dutch "] <- "Dutch"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Ditch"] <- "Dutch"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Dutch and Israeli"] <- "Dutch"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="israel"] <- "Israeli"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="italian"] <- "Italian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Italy"] <- "Italian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Hungary"] <- "Hungarian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Hungarian "] <- "Hungarian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Hungary "] <- "Hungarian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="greek"] <- "Greek"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Germany"] <- "German"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="german"] <- "German"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="China"] <- "Chinese"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Belgium"] <- "Belgian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Belgium "] <- "Belgian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Belg"] <- "Belgian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="czech"] <- "Czech"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="cz"] <- "Czech"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Argentinian/Venezuelan/Italian"] <- "Argentinian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="Austrian"] <- "Austrian"
-pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text=="New Zealand"] <- "New Zealander"
 
 ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
   geom_bar() +  coord_flip() + xlab("Nationality")

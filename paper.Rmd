@@ -1,12 +1,45 @@
 ---
 title: "Lessons learned: creating tutorials teaching Agent-Based Modelling for Archaeologists"
-author: "Ronald Visser"
-date: "`r Sys.Date()`"
-output: pdf_document
+author:
+  - name: Ronald M. Visser \orcidlink{0000-0001-6966-1729}
+    affil-id: 1
+  - name: Annemarie Jutte \orcidlink{0000-0000-0000-0000}
+    affil-id: 1
+  - name: Doug Rocks-Macqueen \orcidlink{0000-0000-0000-0000}
+    affil-id: 2
+  - name: Iza Romanowska \orcidlink{0000-0000-0000-0000}
+    affil-id: 3
+  - name: Tom Brughmans \orcidlink{0000-0000-0000-0000}
+    affil-id: 3
+  - name: Laura van der Knaap \orcidlink{0000-0000-0000-0000}
+    affil-id: 4
+  - name: Karsten Lambers \orcidlink{0000-0000-0000-0000}
+    affil-id: 4
+  - name: Kenneth Aitchison \orcidlink{0000-0000-0000-0000}
+    affil-id: 2
+affiliations:
+  - id: 1
+    name: Saxion University of Applied Sciences,
+  - id: 2
+    name: Landward Research Teoranta.
+  - id: 3
+    name: Aarhus University.
+  - id: 4
+    name: Leiden University.
+date: "`r format(Sys.time(), '%d %B %Y')`"
+geometry:
+  - margin=1in
+output:
+  pdf_document:
+    number_sections: yes
+    #template: default.tex
+bibliography: references.bib
+csl: journal-of-computer-applications-in-archaeology.csl
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
 ```
 
 # Introduction
@@ -19,19 +52,24 @@ EU project
 
 # Method
 
-Tutorials developed
+During the project we have developed tutorials. The tutorials were first designed using storyboards which were later converted into tutorials using NetLOGO Web (<https://www.netlogoweb.org/launch>) and Javascript (). The tutorials were developed together and we worked together using GitHub (<https://github.com/lljvdk/EU-ABMA/>). During the project initial testing was done with all authors and issues in GitHub were used to tackle bugs.
 
-Testing on conferences
+The tutorial were tested during various online and in-person conferences. In addition, we also had students working with the tutorials at Saxion Universty of applied sciences and Leiden University. We used the feedback of the participants to improve the tutorials. The feedback was obtained structurally using two surveys using Qualtrics. The participants of the events were asked to answer questions of a survey before participating. We used the answers to understand what the background of the participants was and to get an estimate of their level of knowledge in relation to ABM (see appendix ... for the questions). After the participants worked with the tutorials during the event they were asked to answer a second survey. Questions of this survey were aimed at the measuring the effectiveness of the tutorials and getting feedback on the workshop and tutorials (see appendix ... for the questions). For some events participants had to register beforehand and we were able to send the pre-workshop survey by email. At other events no registration was possible or necessary and the pre-workshop survey was given at the start of the event. The post-workshop survey was distributed using QR-codes or links at the end of the workshop during the event. After each event we have improved the tutorials based on the received feedback.
 
-Survey before and after the workshop
+| Conference or event          | Period                  | Online, in person or hybrid  | Number of participants | Number of registrations |
+|---------------|---------------|---------------|---------------|---------------|
+| CAA Amsterdam                | April 2023              | In person                    |                        |                         |
+| EAA Belfast                  | August 2023             | In person                    |                        | No registration         |
+| CAA-DE/NL-Fl Online workshop | October 2023            | Online                       |                        |                         |
+| Reuvensdagen                 | November 2023           | In person                    |                        | No registration         |
+| CAA-UK                       | November 2023           | Hybrid                       |                        |                         |
+| Leiden (course)              | December 2023           | In person                    |                        |                         |
+| Aarhus                       | January/February 2024   | Online                       | 178                    | 400                     |
+| Saxion                       | March 2023-January 2024 | In person                    | 18                     |                         |
 
-Qualtrics
+: Conferences, events and situations were the workshops given and the tutorials were tested.
 
-R + packages
-
-Open data: Github / Zenodo
-
-Website
+The surveys were analysed using R [@rcoreteam2023]. The following packages were used for analyses: ggplot2 [@wickham2016], dplyr [@wickham2023a], tidyr [@wickham2023], forcats[@wickham2023b] , lubridate [@grolemund2011] and stringr [@wickham2023c]. The date and the code is available at <https://github.com/RonaldVisser/ABM_tutorials> and (... insert Zenodo reference...)
 
 # Results
 
@@ -39,14 +77,54 @@ Website
 
 ## Before tutorial
 
+The participants of the workshop came from many different countries all over the world.
+
+```{r}
+#pre_surveys <- readRDS("data/pre_workshop_surveys.rds")
+#ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
+#  geom_bar() +  coord_flip() + xlab("Nationality")
+
+```
+
+```{r}
+#ggplot(pre_surveys, aes(x = `What.is.your.age.`, fill = `What.is.your.gender....Selected.Choice`)) +
+#  geom_bar() + xlab("Age") + facet_grid(~Workshop) +
+#  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
 ## After tutorial
 
 ## Final tutorials
 
 ## Dissemination of tutorials
 
+Website
+
 # Conclusion
 
 Lessons learned
 
 Future aspects
+
+# Acknowledgements
+
+The roles of this paper according to CReDiT (Contributor Roles Taxonomy):
+
+Kenneth Aitchison
+
+Tom Brughmans
+
+Annemarie Jutte
+
+Laura van der Knaap
+
+Karsten Lambers
+
+Doug Rocks-Macqueen (Software)
+
+Iza Romanowska
+
+Ronald M. Visser (Writing -- original draft, Formal Analysis, Visualization)
+
+# References
