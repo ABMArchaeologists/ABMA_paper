@@ -5,25 +5,25 @@ author:
     orcid: 0000-0001-6966-1729
     affil-id: 1
   - name: Annemarie Jutte
-    orcid: 0000-0000-0000-0000
+    orcid: 
     affil-id: 1
   - name: Doug Rocks-Macqueen 
-    orcid: 0000-0000-0000-0000
+    orcid: 
     affil-id: 2
   - name: Iza Romanowska 
-    orcid: 0000-0000-0000-0000
+    orcid: 
     affil-id: 3
   - name: Tom Brughmans
-    orcid: 0000-0000-0000-0000
+    orcid: 
     affil-id: 3
   - name: Laura van der Knaap 
-    orcid: 0000-0000-0000-0000
+    orcid: 
     affil-id: 4
   - name: Karsten Lambers 
-    orcid: 0000-0000-0000-0000
+    orcid: 
     affil-id: 4
   - name: Kenneth Aitchison 
-    orcid: 0000-0000-0000-0000
+    orcid: 
     affil-id: 2
 affiliations:
   - id: 1
@@ -38,13 +38,13 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 geometry:
   - margin=1in
 output:
-  pdf_document:
+  bookdown::pdf_document2:
     number_sections: yes
     keep_tex: true
     fig_caption: yes
-    latex_engine: pdflatex
   html_document:
     number_sections: yes
+    fig_caption: yes
   word_document:
     number_sections: yes
 bibliography: references.bib
@@ -89,7 +89,7 @@ The tutorial were tested during various online and in-person conferences. In add
 
 : Conferences, events and situations were the workshops given and the tutorials were tested.
 
-The surveys were analysed using R [@rcoreteam2023]. The following packages were used for analyses: ggplot2 [@wickham2016], dplyr [@wickham2023a], tidyr [@wickham2023], forcats[@wickham2023b] , lubridate [@grolemund2011] and stringr [@wickham2023c]. The date and the code is available at <https://github.com/RonaldVisser/ABM_tutorials> and (... insert Zenodo reference...)
+The surveys were analysed using R [@rcoreteam2023]. The following packages were used for analyses: ggplot2 [@wickham2016], dplyr [@wickham2023a], tidyr [@wickham2023], forcats[@wickham2023b], lubridate [@grolemund2011] and stringr [@wickham2023c]. The date and the code is available at <https://github.com/RonaldVisser/ABM_tutorials> and (... insert Zenodo reference...)
 
 # Results
 
@@ -97,7 +97,9 @@ The surveys were analysed using R [@rcoreteam2023]. The following packages were 
 
 ## Before tutorial
 
-A large proportion of the participants of the workshops gave us information using the survey before the workshops 172 of (...total number...) participants. The respondents came from many different countries all over the world (see Figure \@ref(fig:nationality). The number of female respondents slightly outnumber the male ones and a small group did not share their gender and two were non-binary \@ref(fig:gender-age). The ages of the respondents ranged from below 20 to over 70, reaching people in different age classes, although the majority was aged between 20 and 40.
+A large proportion of the participants of the workshops gave us information using the survey before the workshops 172 of (...total number...) participants. The respondents came from many different countries all over the world (see Figure \@ref(fig:nationality). The number of female respondents slightly outnumber the male ones and a small group did not share their gender and two were non-binary (see Figure \@ref(fig:gender-age)). The ages of the respondents ranged from below 20 to over 70, reaching people in different age classes, although the majority was aged between 20 and 40. It seems that the different events also had a slightly different distribution of both gender and age. For example, more older people attended the workshop at the CAA conference in April 2023 and more male people were present during the workshop at the Reuvensdagen in November 2023.
+
+students???
 
 ```{r nationality, fig.cap="The nationality of the participants that filled in the survey.", echo=FALSE}
 pre_surveys <- readRDS("data/pre_workshop_surveys.rds")
@@ -113,9 +115,9 @@ ggplot(pre_surveys, aes(x = `What.is.your.age.`, fill = `What.is.your.gender....
 
 ```
 
-Most of the respondents had several skills with computer applications in archaeology (see Figure @ref(fig:computer-skills)), and many of them did have some knowledge of ABM, although a large group was completely new to the subject. The majority had never applied ABM before participating in the workshops with 14 having applied ABM. It is interesting to note that many respondents did know what kind of software was available for ABM (see Figure \@ref(fig:abm-knowledge)).
+Most of the respondents had several skills with computer applications in archaeology (see Figure \@ref(fig:computer-skills)), and many of them did have some knowledge of ABM, although a large group was completely new to the subject. The majority had never applied ABM before participating in the workshops with 14 having applied ABM. It is interesting to note that many respondents did know what kind of software was available for ABM (see Figure \@ref(fig:abm-knowledge)).
 
-```{r, computer-skills, fig.cap="The computer skills of the respondents."}
+```{r, computer-skills, fig.cap="The computer skills of the respondents.", out.width="50%"}
 pre_surveys %>%
   select(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
   separate_rows(`Which.computer.skills.do.you.have....Selected.Choice`, sep = ',\\s*') %>%
@@ -123,7 +125,6 @@ pre_surveys %>%
   group_by(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
   ggplot(aes(x=`Which.computer.skills.do.you.have....Selected.Choice`)) + geom_bar() +
     xlab("Computer skills") + coord_flip()
-
 ```
 
 ```{r, abm-knowledge, fig.cap="Respondents knowledge and experience with ABM.", fig.show="hold", out.width="50%"}
@@ -138,8 +139,6 @@ pre_surveys %>%
   group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   ggplot(aes(x=`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`)) + geom_bar() +
   xlab("ABM Software known") + coord_flip()
-
-
 ```
 
 ## After tutorial
