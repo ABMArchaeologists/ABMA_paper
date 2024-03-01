@@ -60,7 +60,7 @@ author:
       - Writing - Review & Editing
     orcid_id: 0000
     affiliation: Aarhus University
-#date: "`r format(Sys.time(), '%d %B %Y')`"
+date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   distill::distill_article:
     number_sections: yes
