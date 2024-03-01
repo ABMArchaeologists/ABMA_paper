@@ -80,7 +80,7 @@ knit: (function(inputFile, encoding) {
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(ggplot2)
 library(dplyr)
 library(tidyr)
@@ -152,7 +152,7 @@ ggplot(pre_surveys, aes(x = `What.is.your.age.`, fill = `What.is.your.gender....
 
 Most of the respondents had several skills with computer applications in archaeology (see Figure \@ref(fig:computer-skills)), and many of them did have some knowledge of ABM, although a large group was completely new to the subject. The majority had never applied ABM before participating in the workshops with 14 having applied ABM. It is interesting to note that many respondents did know what kind of software was available for ABM (see Figure \@ref(fig:abm-knowledge)).
 
-```{r, computer-skills, fig.cap="The computer skills of the respondents.", out.width="50%"}
+```{r, computer-skills, fig.cap="The computer skills of the respondents.", out.width="50%", echo=FALSE}
 pre_surveys %>%
   select(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
   separate_rows(`Which.computer.skills.do.you.have....Selected.Choice`, sep = ',\\s*') %>%
@@ -162,7 +162,7 @@ pre_surveys %>%
     xlab("Computer skills") + coord_flip()
 ```
 
-```{r, abm-knowledge, fig.cap="Respondents knowledge and experience with ABM.", fig.show="hold", out.width="50%"}
+```{r, abm-knowledge, fig.cap="Respondents knowledge and experience with ABM.", fig.show="hold", out.width="50%", echo=FALSE}
 pre_surveys %>% 
   filter(`Do.you.know.what.Agent.Based.Modeling.is.`!="Not shared") %>% 
   ggplot(aes(x = `Do.you.know.what.Agent.Based.Modeling.is.`)) +
@@ -178,7 +178,7 @@ pre_surveys %>%
 
 As shown above, the respondents had some knowledge on ABM in general, but did not know how to apply this or had never applied this before. The respondents were also asked how they rated the available knowledge on ABM (Figure \@ref(fig:available-theory)). While the largest group of them had no opinion on the subject, a very large proportion of the responded answered that they rated the available theory on ABM as limited and a smaller group as sufficient. A minority rated the available theory on ABM as more than sufficient. This clearly shows the need for better educational material.
 
-```{r, available-theory, fig.cap="Respondents optionion on the quality of theory on ABM faceted out by event.", fig.width=11}
+```{r, available-theory, fig.cap="Respondents optionion on the quality of theory on ABM faceted out by event.", fig.width=11, echo=FALSE}
 pre_surveys %>%
   select(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`, Workshop) %>%
   filter(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`!="") %>%
@@ -196,7 +196,7 @@ A large proportion of the participants of the workshops gave us information usin
 
 The respondents
 
-```{r, rating-workshop, fig.cap="Respondents rating of the workshop in general faceted for each event.", fig.width=11}
+```{r, rating-workshop, fig.cap="Respondents rating of the workshop in general faceted for each event.", fig.width=11, echo=FALSE}
 post_surveys %>%
   mutate(How.would.you.rate.the.workshop.in.general. = fct_relevel(How.would.you.rate.the.workshop.in.general., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.workshop.in.general.)) + geom_bar() +
@@ -207,7 +207,7 @@ post_surveys %>%
 
 The majority of the respondents were enthusiastic about the teaching material, with the majority rating it as excellent or good. The teachers were even rated better than the teaching material, with more respondents rating them as excellent (see Figure \@ref(fig:rating-teaching)).
 
-```{r, rating-teaching, fig.cap="Respondents rating of the teaching material in general faceted for each event.", fig.width=11, fig.show='hold', out.height="50%"}
+```{r, rating-teaching, fig.cap="Respondents rating of the teaching material in general faceted for each event.", fig.width=11, fig.show='hold', out.height="50%", echo=FALSE}
 post_surveys %>%
   mutate(How.would.you.rate.the.teaching.material. = fct_relevel(How.would.you.rate.the.teaching.material., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.teaching.material.)) + geom_bar() +
@@ -229,7 +229,7 @@ We also received feedback on possible improvements. For the first workshops we m
 
 The majority of the respondents that wanted to apply ABM in the future for research (144 of the 164 that answered this question, see Figure \@ref(fig:future-abm)). Some of the respondents were already using ABM. A large group was not sure yet in how to apply ABM and wanted to read more on the subject or play a bit with the possibilities. Many respondents also shared the context in which they were thinking to apply ABM to. Various were thinking about movement of people or goods over land or water, sometimes in relation to trade or other distribution mechanisms. Others thought of demography, social networks, migration or settlement distributions patterns. The natural environment and the interaction with humans in the past was also mentioned by some, and often in relation to GIS or how to replace GIS with ABM. The archaeological periods that the participants were interested in were very diverse ranging from the paleolithic to the medieval period.
 
-```{r, future-abm, fig.cap="The respondents reaction to the question if they thing that they will apply ABM in the future."}
+```{r, future-abm, fig.cap="The respondents reaction to the question if they thing that they will apply ABM in the future.", out.height="50%", echo=FALSE}
 post_surveys %>%
   filter(!is.na(Do.you.think.that.you.will.apply.ABM.to.your.own.research..If.yes..can.you.elaborate....Selected.Choice)) %>%
   ggplot(aes(x = 1, fill = `Do.you.think.that.you.will.apply.ABM.to.your.own.research..If.yes..can.you.elaborate....Selected.Choice`)) +
