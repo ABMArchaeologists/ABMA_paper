@@ -74,6 +74,9 @@ output:
     fig_caption: yes
 bibliography: references.bib
 csl: journal-of-computer-applications-in-archaeology.csl
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding,
+  output_format = "all") })
 ---
 
 ```{r setup, include=FALSE}
@@ -100,7 +103,7 @@ New handbook [@romanowska2021]
 
 No formal training
 
-EU project
+EU project <https://erasmus-plus.ec.europa.eu/nl/projects/search/details/2021-2-IE01-KA220-VET-000049054>
 
 # Method
 
