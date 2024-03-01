@@ -23,7 +23,7 @@ author:
       - Writing - Review & Editing
     affiliation: Landward Research Teoranta
   - name: Iza Romanowska 
-    orcid_id: 00000
+    orcid_id: 0000-0002-9487-2111
     role: 
      - Writing - Original Draft Preparation
      - Writing - Review & Editing
@@ -295,6 +295,8 @@ Lessons learned
 Future aspects
 
 # Acknowledgements
+
+This project was funded as an Erasmus+ project (<https://erasmus-plus.ec.europa.eu/nl/projects/search/details/2021-2-IE01-KA220-VET-000049054>) and we thank the Erasmus+ program for enabling us to make these tutorials.
 
 We would like to thank the student groups at Saxion University of Applied Sciences that worked with us:
 
