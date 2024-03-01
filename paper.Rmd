@@ -109,6 +109,8 @@ EU project <https://erasmus-plus.ec.europa.eu/nl/projects/search/details/2021-2-
 
 During the project we have developed tutorials. The tutorials were first designed using storyboards which were later converted into tutorials using NetLOGO Web (<https://www.netlogoweb.org/launch>) and Javascript (). The tutorials were developed together and we worked together using GitHub (<https://github.com/lljvdk/EU-ABMA/>). During the project initial testing was done with all authors and issues in GitHub were used to tackle bugs.
 
+The learning and teaching material for ABM for archaeologists assumes that the users have completed secondary education. It is suitable for archaeologists with at least some background in archaeology and preferably after at least the first year of a Bachelor study in Archaeology (preferably above EQF levels 4 or 5). In addition, the tutorials are aimed at professionals working in archaeology and some experience with computer. We also assume that learners are proficient in English and have at least the Reading B1 level, but Reading B2 is recommended [@councilofeurope2020]. The tutorials are developed aiming to develop learners in the following competence area's: 1. Information and data literacy, 2. Communication and collaboration, 3. Digital content creation and, 5. Problem solving [@europeancommissionjointresearchcentre2022].
+
 The tutorial were tested during various online and in-person conferences. The in-person conferences were attended by several people from the project team. During the online events we were always present with several people and enabled participants to go to break-out rooms if they needed any help or wanted to discuss things. In addition, we also had students working with the tutorials at Saxion University of applied sciences and Leiden University. We used the feedback of the participants to improve the tutorials. The feedback was obtained structurally using two surveys using Qualtrics. The participants of the events were asked to answer questions of a survey before participating. We used the answers to understand what the background of the participants was and to get an estimate of their level of knowledge in relation to ABM (see appendix ... for the questions). After the participants worked with the tutorials during the event they were asked to answer a second survey. Questions of this survey were aimed at the measuring the effectiveness of the tutorials and getting feedback on the workshop and tutorials (see appendix ... for the questions). For some events participants had to register beforehand and we were able to send the pre-workshop survey by email. At other events no registration was possible or necessary and the pre-workshop survey was given at the start of the event. The post-workshop survey was distributed using QR-codes or links at the end of the workshop during the event. After each event we have improved the tutorials based on the received feedback.
 
 | Conference or event          | Period                  | Online, in person or hybrid | Number of participants | Number of registrations |
@@ -133,7 +135,33 @@ Over the course of the project three groups of students worked on the project du
 
 ## Workhops and tutorials
 
-## Before the workhops
+## Final tutorials
+
+The set of developed tutorials consists of the following tutorials:
+
+-   Tutorial 1: Introduction to ABM
+
+-   Tutorial 2: Beginning with NetLogo
+
+-   Tutorial 3: Expanded ABM skills
+
+-   Tutorial 4: Intermediate ABM
+
+-   Tutorial 5: How to Model
+
+Each tutorials consists of a different number of lessons that guide the learner in a self-pace manner through the lessons.
+
+In the first tutorial the learner will learn what simulations and agent-based models are and how they can help in archaeological research. This tutorial consists of 4 lessons. The first two lesson introduce the learner into simulation in general and Agent-Based Modelling in specific. Various concepts related to ABM are introduced and the first concepts within NetLogo are explained. The third lesson aims to explain how ABMs are used in archaeological research. The final lesson introduces the learner to the NetLogo Interface and the difference between the Interactive and Authoring mode. This tutorial build a foundation for working in NetLogo and with ABM. All activity stays within the intermediate level, although higher levels might be touch upon.
+
+In tutorial 2 the learner will learn the basics of NetLogo by making your first simulation on the Out of Africal dispersal of homo sapiens. The leaerner will work with basic NetLogo syntax and learn how to set up a simulation and visualize their outcomes. This tutorial consists of 9 lessons. This tutorial intends to guide the learner from the intermediate to the advanced level of proficiency. The learning curve is relatively gentle. This is achieved by learning to work with the NetLogo web interface. The primitives are introduced and initialization phase of a simple ABM is gone through. The world within NetLogo's world (including dimensions, coordinates, origin) and how to alter it are explained and experience in a hands-on approach. The learners learn about simple simulation loops and how to use primitives. The advanced level is achieved with the custom procedures and variables. In addition, if-statements are introduced and more complex versions thereof. Exporting information using plots is also explained.
+
+In the third tutorial, the learner will build a simple trade model, picking up more advanced NetLogo coding along the way, such as loops, lists and reporters. The learner will be introduced to some techniques like modular code development and debugging which will become important with this increased coding complexity. This tutorial consists of 7 lessons. This tutorial intends to guide the learner from the intermediate to the advanced and highly specialised level of proficiency. This is achieved by improving development through using modular code, pseudocode and annotating the code. In addition, custom agent breeds are introduced. Visualization with labels and reporters, plots and monitors are learned. The use of loops is further explained. Debugging is learned in lesson 7. This can be very advanced, since it involves knowledge of the NetLogo-language combined with problem solving of unexpected behaviour.
+
+In tutorial 4 the learner will work with Sugarscape simulations to further expand your ABM and NetLogo skills. The learner will learn how to set up more complex interactions between agents and the environment. Furthermore, the basics of setting up good experiments and validating models will be explained. This tutorial consists of 8 lessons. This tutorial intends to guide the learner from the (intermediate and) advanced level to the highly specialised level of proficiency. In this tutorial more complex agent-environment interaction is further learned, including learning ways to visualize the environment and how to give more agency to patches. Creating toy landscapes are central to lesson 5. The learner also learns the basics of setting up experiments in NetLogo and how to use monitors and flexible plots to understand the results. The validation of agent-based models is an important concept of designing a good experiment. The finale step, is to compare simulation results with the archaeological record. The last lesson is aimed at learning syntax to make lists more dynamic and how to refactor code.
+
+In the final and fifth tutorial the learner will learn more about how to actually incorporate agent-based modelling in research. This tutorial focusses less on programming in NetLogo and more on the model development process. The learner will learn about the different phases in modelling and how to export data from models. This tutorial consists of 5 lessons. This tutorial touches upon various levels, but mainly between the intermediate and highly specialised level of proficiency. This tutorial is approaches more theoretical aspects in a practical environment. The learner leans about the model development process starting with the conceptual phase of the model development. Good and bad research questions for modelling are explained and the difference between them. The learner needs to understand how to pick the right modelling technique. The learner should understand the importance of properly conceptualizing a model before starting the technical phase of the model development. In this phase parametrisation, designing experiments and the analyses and interpretation of the models are important. Learning about the dissemination phase of the model development is aimed at understanding (the importance of) publishing models and replication. In addition, learning how to export results from NetLogo using basic export primitives is explained. The BehaviorSpace is explained to enable the learners to analyse the output of models.
+
+## Before the workshops
 
 A large proportion of the participants of the workshops gave us information using the survey before the workshops (172 of 368 participants). The respondents came from many different countries all over the world (see Figure \@ref(fig:nationality). The number of female respondents slightly outnumber the male ones and a small group did not share their gender and two were non-binary (see Figure \@ref(fig:gender-age)). The ages of the respondents ranged from below 20 to over 70, reaching people in different age classes, although the majority was aged between 20 and 40. It seems that the different events also had a slightly different distribution of both gender and age. For example, more older people attended the workshop at the CAA conference in April 2023 and more male people were present during the workshop at the Reuvensdagen in November 2023.
 
@@ -190,11 +218,13 @@ pre_surveys %>%
   facet_grid(~Workshop)
 ```
 
-## After tutorial
+## During the workshop
+
+During the workshops the participants worked in a self-paced manner, often on their own, but sometimes working together and discussing the tutorials. Some particpants engaged in discussion with the teachers to learn how they could apply ABM in their research of discuss possibilities for the application of ABM in general.
+
+## After workshop
 
 A large proportion of the participants of the workshops gave us information using the survey after the workshops (171 of 368 participants), a similar proportion as those responding to the survey before the workshop.
-
-The respondents
 
 ```{r, rating-workshop, fig.cap="Respondents rating of the workshop in general faceted for each event.", fig.width=11, echo=FALSE}
 post_surveys %>%
@@ -238,7 +268,19 @@ post_surveys %>%
                       labels = c("No", "Yes"))
 ```
 
-## Final tutorials
+## The Digital Competence Framework for Citizens (2.2)
+
+The tutorials are aimed at developing learners in the following competence area's: 1. Information and data literacy, 2. Communication and collaboration, 3. Digital content creation and, 5. Problem solving [@europeancommissionjointresearchcentre2022]. In these competence area's various competences are developed towards an advanced or even specialised level.
+
+For competence area 1. Information and data literacy: the tutorials mainly address 1.2 Evaluating Data, Information And Digital Content and 1.3 Managing Data, Information And Digital Content. The users learn about working with data, being critacal of their digital content and how to model and manage the data in the context of an ABM. For tutorial 2 the user is expected to be able to lookup information using the NetLogo(Web) dictionary (<http://ccl.northwestern.edu/netlogo/bind/> or <http://ccl.northwestern.edu/netlogo/docs/dictionary.html>).
+
+For Competence Area 2. Communication and collaboration the tutorials mainly address 2.1 Interacting Through Digital Technologies, because the users are constantly interacting with digital technologies, but communications is not relevant for the tutorials. However, during the workshops given in the course of the project, participants interacted with each other and the teachers.
+
+Competence Area 3. Digital content creation is one of the main competence area's for the ABM-teaching material. In the process of learning ABM the users are constantly 3.1 Developing Digital Content and 3.2 Integrating And Re-Elaborating Digital Content. The material does not touch upon 3.3 Copyright And Licences, but we assume that users have a general understanding. A very important aspect of learning ABM is 3.4 Programming. The users are exploring the possibilities and chances of programming an ABM. The users are expected to learn both syntax and more general concepts such as modular code development, loops, lists and commenting and documenting code.
+
+Competence Area 5. Problem solving is very important and is closely tied to 3.4 Programming, since programming involves a lot of problem solving. In addition, the creation of a highly complex ABM consists of problem solving all the time, including debugging. All competencies are addressed: 5.1 Solving Technical Problems, is common when writing code, learning about coding, error handling and going from pseudocode to real code. The competence 5.2 Identifying Needs And Technological Responses, is a central issue of the course, while 5.3 Creatively Using Digital Technology is an important aspect of learning to think in models and develop models themselves. In tutorial 2 various aspects of 5.4 Identifying Digital Competence Gaps, are relevant, since this tutorial will force the user to remember code and commands and forces the user to assess their knowledge and skills.
+
+## Digital Skills Passport
 
 ## Dissemination of tutorials
 
