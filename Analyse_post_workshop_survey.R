@@ -67,14 +67,14 @@ post_surveys %>%
   mutate(How.would.you.rate.the.trainers.teachers. = fct_relevel(How.would.you.rate.the.trainers.teachers., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.trainers.teachers.)) + geom_bar() +
   xlab("Rating of the teacher")
-ggsave("export/postworkshop/rating_teaching_material.png")
+ggsave("export/postworkshop/rating_teachers.png")
 
 post_surveys %>%
   mutate(How.would.you.rate.the.trainers.teachers. = fct_relevel(How.would.you.rate.the.trainers.teachers., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.trainers.teachers.)) + geom_bar() +
   xlab("Rating of the teacher") + facet_grid(~Workshop) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggsave("export/postworkshop/rating_workshop_facet.png", width = 10)
+ggsave("export/postworkshop/rating_teachers_facet.png", width = 10)
 
 # Apply ABM in the future?
 

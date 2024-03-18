@@ -114,7 +114,7 @@ The learning and teaching material for ABM for archaeologists assumes that the u
 The tutorial were tested during various online and in-person conferences. The in-person conferences were attended by several people from the project team. During the online events we were always present with several people and enabled participants to go to break-out rooms if they needed any help or wanted to discuss things. In addition, we also had students working with the tutorials at Saxion University of applied sciences and Leiden University. We used the feedback of the participants to improve the tutorials. The feedback was obtained structurally using two surveys using Qualtrics. The participants of the events were asked to answer questions of a survey before participating. We used the answers to understand what the background of the participants was and to get an estimate of their level of knowledge in relation to ABM (see appendix ... for the questions). After the participants worked with the tutorials during the event they were asked to answer a second survey. Questions of this survey were aimed at the measuring the effectiveness of the tutorials and getting feedback on the workshop and tutorials (see appendix ... for the questions). For some events participants had to register beforehand and we were able to send the pre-workshop survey by email. At other events no registration was possible or necessary and the pre-workshop survey was given at the start of the event. The post-workshop survey was distributed using QR-codes or links at the end of the workshop during the event. After each event we have improved the tutorials based on the received feedback.
 
 | Conference or event          | Period                  | Online, in person or hybrid | Number of participants | Number of registrations |
-|---------------|---------------|---------------|---------------|---------------|
+|------------------------------|-------------------------|-----------------------------|------------------------|-------------------------|
 | CAA Amsterdam                | April 2023              | In person                   | 36                     | 53                      |
 | EAA Belfast                  | August 2023             | In person                   | 21                     | No registration         |
 | CAA-DE/NL-Fl Online workshop | October 2023            | Online                      | 40                     | 76                      |
@@ -308,6 +308,6 @@ We would like to thank the student groups at Saxion University of Applied Scienc
 
 We had help from many people during the various workshops and we would like to thank them for their help (in alphabetical order of their first name): Adéla Sobotkova, Agnes Schneider, Alice Overgaauw, Eduardo Herrera Malatesta, Jens Emil Bødstrup Christoffersen, Johan Broersma, Magnus Lindholm Nielsen, Mandy Hazenberg, María Coto Sarmiento, Paulina Fulneczek, Petra Hermankova, Ties Heesink. We also want to thank all the participants of our workshops.
 
-Funding acknowledgements (need for the part of the APC that I will pay): The Carlsberg Foundation\'s *Young Researcher Fellowship* (CF21-0382).
+Funding acknowledgements (need for the part of the APC that I will pay): The Carlsberg Foundation's *Young Researcher Fellowship* (CF21-0382).
 
 # References
