@@ -286,7 +286,7 @@ Competence Area 5. Problem solving is very important and is closely tied to 3.4 
 
 The tutorials are publically hosted on GitHub^[https://github.com/ABMArchaeologists/ABMA_tutorials/]. Anyone interested can download the tutorials and their source code. To increase the accessibility and visibility of the tutorials, a website has been launced^[https://ABMArchaeologists.github.io/ABMA_Website/#/]. On this website, the tutorials can be followed without the need to download any software. 
 
-Besides, the tutorial, the website provides: a link that can be used for feedback, basic explanations of agent-based modelling, an introductory presentation from one of the workshops, videos from an online course at Leiden University [@spoc2019] and external resources people can use to learn agent-based modelling.
+Besides, the tutorial, the website provides: a link that can be used for feedback, basic explanations of agent-based modelling, an introductory presentation from one of the workshops, videos from an online course at Leiden University [@spoc2019] and external resources people can use to learn agent-based modelling. The website was mainly developed by one of the student groups from Saxion University of Applied Sciences, see the acknowledgements.
 
 # Conclusion
 
@@ -305,6 +305,8 @@ We would like to thank the student groups at Saxion University of Applied Scienc
 -   February 2022-July 2023: Alice Overgaauw, Johan Broersma, Mandy Hazenberg, Paulina Fulneczek, Ties Heesink and their tutor: Jan Willem Huson.
 
 -   September 2023-February 2024: Arnfinn Sijbrant, Eva Baan, Jip Mulder, Robert Aalpoel, Sem Lucas, Sterre Regts and their tutor: Jan Willem Huson.
+
+This last group, we want to thank for providing us with the website on which the tutorials are hosted.
 
 We had help from many people during the various workshops and we would like to thank them for their help (in alphabetical order of their first name): Adéla Sobotkova, Agnes Schneider, Alice Overgaauw, Eduardo Herrera Malatesta, Jens Emil Bødstrup Christoffersen, Johan Broersma, Magnus Lindholm Nielsen, Mandy Hazenberg, María Coto Sarmiento, Paulina Fulneczek, Petra Hermankova, Ties Heesink. We also want to thank all the participants of our workshops.
 
