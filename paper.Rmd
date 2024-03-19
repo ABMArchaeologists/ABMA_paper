@@ -284,9 +284,9 @@ Competence Area 5. Problem solving is very important and is closely tied to 3.4 
 
 ## Dissemination of tutorials
 
-For the further dissemination of the tutorials a website has been launced^[https://ABMArchaeologists.github.io/ABMA_Website/#/]. The tutorials can be found on this website and there is a link that can be used for feedback. Additionally, the website contains: basic explanations of agent-based modelling, a recording from one of the workshops, videos from an online course at Leiden University [@spoc2019] and external resources people can use to learn agent-based modelling.
+The tutorials are publically hosted on GitHub ^[https://ABMArchaeologists.github.io/ABMA_Website/#/]. Anyone interested can download the tutorials and their source code. To increase the accessibility and visibility of the tutorials, a website has been launced^[https://ABMArchaeologists.github.io/ABMA_Website/#/]. On this website, the tutorials can be followed without the need to download any software. 
 
-Github
+Besides, the tutorial, the website provides: a link that can be used for feedback, basic explanations of agent-based modelling, an introductory presentation from one of the workshops, videos from an online course at Leiden University [@spoc2019] and external resources people can use to learn agent-based modelling.
 
 # Conclusion
 
