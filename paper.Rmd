@@ -5,26 +5,6 @@ author:
     orcid_id: 0000-0001-6966-1729
     roles: [writing, editing, analysis, visualization]
     affiliation: Saxion University of Applied Sciences
-  - name: Annemarie Jutte
-    orcid_id: 0009-0004-9322-0674
-    roles: [writing, editing, software]
-    affiliation: Saxion University of Applied Sciences
-  - name: Doug Rocks-Macqueen 
-    orcid_id: 0000
-    roles: [writing, editing, software]
-    affiliation: Landward Research Teoranta
-  - name: Iza Romanowska 
-    orcid_id: 0000-0002-9487-2111
-    roles: [writing, editing]
-    affiliation: Aarhus University
-  - name: Tom Brughmans
-    roles: [writing, editing]
-    orcid_id: 0000-0002-1589-7768
-    affiliation: Aarhus University
-  - name: Laura van der Knaap 
-    roles: [writing, editing, software]
-    orcid_id: 0000
-    affiliation: Leiden University
   - name: Karsten Lambers 
     roles: [writing, editing]
     orcid_id: 0000-0001-6432-0925
@@ -33,6 +13,26 @@ author:
     roles: [writing, editing, software, project administration]
     orcid_id: 0000-0001-6594-1408
     affiliation: Landward Research Teoranta
+  - name: Annemarie Jutte
+    orcid_id: 0009-0004-9322-0674
+    roles: [writing, editing, software]
+    affiliation: Saxion University of Applied Sciences
+  - name: Doug Rocks-Macqueen 
+    orcid_id: 0000
+    roles: [writing, editing, software]
+    affiliation: Landward Research Teoranta
+  - name: Laura van der Knaap 
+    roles: [writing, editing, software]
+    orcid_id: 0000
+    affiliation: Leiden University
+  - name: Iza Romanowska 
+    orcid_id: 0000-0002-9487-2111
+    roles: [writing, editing]
+    affiliation: Aarhus University
+  - name: Tom Brughmans
+    roles: [writing, editing]
+    orcid_id: 0000-0002-1589-7768
+    affiliation: Aarhus University
   - name: Adam Pažout
     roles: [writing, editing]
     orcid_id: 0000
@@ -72,15 +72,43 @@ factor_levels <- c("Excellent", "Good", "Sufficient", "Insufficient", "Not share
 
 # Introduction
 
-ABM application increased in Archaeology
+While Agent-Based Modelling is a predictive tool that is in high demand from archaeologists, there are significant sectoral problems with access to vocational training for this skill. A survey of practitioners [@davies2018] found significant deficiencies in the provision of ABM training; 76% of modellers were primarily self-taught with some degree of secondary support i.e. 27% relied on peer support, only 7% had any sort of formal training at a workshop or summer school while only 14% received training as part of a degree.
+
+A consortium of Landward Research Teoranta, Aarhus Universitet, Universiteit Leiden and Saxion University of Applied Sciences recognised this need, and sought to address and overcome this training deficiency through the development and delivery of a project to create and make available open learning materials that could be integrated into a wide range of training programmes, such as face-to-face training, employer-focussed continuing professional development seminars, webinars, MOOCs (Massive Open Online Courses) and self-directed learning.
+
+This project, Agent-Based Modelling for Archaeologists (<https://erasmus-plus.ec.europa.eu/nl/projects/search/details/2021-2-IE01-KA220-VET-000049054>), was delivered with the support of the Erasmus+ programme of the European Union.
+
+The project sought to create Open (Open Access and Open Source) Educational Resources (OERs) for training in Agent-Based Modelling for Archaeologists. These OERs were to be HTML and JavaScript based so they could be used on any device with a browser, even if it is not connected to the internet. These are hands-on practical exercises, taking learners through the process of creating the digital models, and modular so they can be independent or incorporated into other teaching tools like learning management systems. They are deliberately 'method agnostic' so they can be incorporated into any tools from self-teaching to MOOCs, and are supported by the creation of support materials to encourage use of the OERs.
+
+The activities the project implemented were:
+
+-   Development of a hands-on vocational training programme, aligned with the recently published *Agent-Based Modelling for Archaeology: Simulating the Complexity of Societies* [@romanowska2021a].
+
+-   Conversion of the training programme into modular learning resources that are interactive, based on HTML and JavaScript standards.
+
+-   Creation of support materials to encourage use of the OERs.
+
+-   Creation of how-to guides to help trainers incorporate OERs into their teaching
+
+-   Creation of a code and learning materials repository that will allow the project to continue sustainability after the European Union support has ended and to facilitate the creation of an open-source community to manage and improve the OERs in the future.
+
+-   Promotion through a series of multiplier events.
+
+The expected results and outcomes, for the target audience of professional archaeologists, were:
+
+1.  increased level of digital competence, specifically in advanced computer modelling skills that are highly transferable to other industries (computer programming and simulation development);
+
+2.  improved transnational mobility through matching of the skills being delivered with European and Sectoral Frameworks, leading to individual workers being better enabled to demonstrate their skills to employers across Europe;
+
+3.  increased opportunities for professional development by having access to professional training that can be incorporated into formal or non-formal/informal learning.
+
+For the secondary target audience of vocational training providers in archaeology e.g. employers, colleges and not-for-profit organisations, the expected results and outcomes were:
+
+1.  increased quality of education and training in the areas of ABM that are free and open;
+
+2.  access to teaching materials for skills that are in high demand and aligned with employers\' needs.
 
 We were able to draw on previous experiences with a small private online course (SPOC) on 'Modelling and Simulation in Archaeology' that some of us designed for graduate teaching at the Faculty of Archaeology, Leiden University, where we taught this course in 2016/17 and again in 2018/19 [@scherjon2019]. For this course we developed new online teaching materials comprising pre-recorded lectures, practical exercises, reading assignments and exams. While we greatly benefited from that experience, the target group of the SPOC was graduate students with prior experience in digital archaeology, whereas the ERASMUS+ project was aimed at a much broader target group of archaeology students and professionals with only basic digital skills.
-
-New handbook [@romanowska2021]
-
-No formal training
-
-EU project <https://erasmus-plus.ec.europa.eu/nl/projects/search/details/2021-2-IE01-KA220-VET-000049054>
 
 # Method
 
@@ -91,7 +119,7 @@ The learning and teaching material for ABM for archaeologists assumes that the u
 After initial debugging by the project team, the tutorials were tested 'in the wild' during various online and in-person conferences. The in-person conferences were attended by several people from the project team. During the online events we were always present with several people and enabled participants to go to break-out rooms if they needed any help or wanted to discuss things. In addition, we also had students working with the tutorials at Saxion University of Applied Sciences and Leiden University. We We obtained structured feedback from the participants and used it to improve the tutorials prior to the next test. The feedback was obtained from two surveys using Qualtrics. The participants of the events were asked to answer questions of the first survey before participating. We used the answers to understand what the background of the participants was and to get an estimate of their level of knowledge in relation to ABM (see appendix ... for the questions). At the end of the event the participants were asked to answer a second survey. Questions of this survey were aimed at measuring the effectiveness of the tutorials and getting feedback on the workshop and tutorials (see appendix ... for the questions). For some events participants had to register beforehand and we were able to send the pre-workshop survey by email. At other events no registration was possible or necessary and the pre-workshop survey was given at the start of the event. The post-workshop survey was distributed using QR-codes or links at the end of the workshop during the event. After each event we improved the tutorials based on the received feedback.
 
 | Conference or event          | Period                  | Online, in person or hybrid | Number of participants | Number of registrations |
-|------------------------------|-------------------------|-----------------------------|------------------------|-------------------------|
+|---------------|---------------|---------------|---------------|---------------|
 | CAA Amsterdam                | April 2023              | In person                   | 36                     | 53                      |
 | EAA Belfast                  | August 2023             | In person                   | 21                     | No registration         |
 | CAA-DE/NL-Fl Online workshop | October 2023            | Online                      | 40                     | 76                      |
@@ -267,13 +295,27 @@ Besides, the tutorial, the website provides: a link that can be used for feedbac
 
 # Conclusion
 
-Lessons learned
+Things to address
 
-Future aspects
+-   demand for tutorials exceeded expectations
+
+-   tutorials helpful in understanding ABM
+
+-   international cooperation
+
+-   Digital competency framework / Skills passport
+
+-   OER: open learning
+
+-   Future aspects:
+
+    -   application in educational programmes
+
+    -   community driven updates (?)
 
 # Acknowledgements
 
-This project was funded as an Erasmus+ project (<https://erasmus-plus.ec.europa.eu/nl/projects/search/details/2021-2-IE01-KA220-VET-000049054>) and we thank the Erasmus+ program for enabling us to make these tutorials.
+This project was undertaken with the support of the Erasmus+ programme of the European Union (<https://erasmus-plus.ec.europa.eu/nl/projects/search/details/2021-2-IE01-KA220-VET-000049054>).
 
 We would like to thank the student groups at Saxion University of Applied Sciences that worked with us:
 
