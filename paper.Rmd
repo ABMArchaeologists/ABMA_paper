@@ -281,7 +281,7 @@ post_surveys %>%
 
 ## The Digital Competence Framework for Citizens (2.2)
 
-As mentioned above, the following competence area's were identified as relevant for the tutorials: 1. Information and data literacy, 2. Communication and collaboration, 3. Digital content creation and, 5. Problem solving [@europeancommissionjointresearchcentre2022]. In these competence area's various competences are developed towards an advanced or even specialised level.
+As mentioned above, the following competence area's were identified as relevant for the tutorials: 1. Information and data literacy, 2. Communication and collaboration, 3. Digital content creation and, 5. Problem solving [@europeancommissionjointresearchcentre2022]. In these competence area's various competences are developed towards an advanced or even specialised level. A more extensive description of the Digital Competence Framework for Citizens in relation to Agent-Based Modelling for archaeologists is also available [@visser2024].
 
 For competence area 1. Information and data literacy: the tutorials mainly address 1.2 Evaluating Data, Information And Digital Content and 1.3 Managing Data, Information And Digital Content. The users learn about working with data, being critical of their digital content and how to model and manage the data in the context of an ABM. For tutorial 2 the user is expected to be able to find information using the NetLogo(Web) dictionary (<http://ccl.northwestern.edu/netlogo/bind/> or <http://ccl.northwestern.edu/netlogo/docs/dictionary.html>).
 
@@ -327,7 +327,7 @@ We would like to thank the student groups at Saxion University of Applied Scienc
 
 -   September 2022-February 2023: Dany Dragoi, Liam van den Bosch, Marko Stojkovic, Max van Duinen, Nora van den Engel, Roan Man, Stefan Oostingh and their tutor: Mark Spanjer.
 
--   February 2022-July 2023: Alice Overgaauw, Johan Broersma, Mandy Hazenberg, Paulina Fulneczek, Ties Heesink and their tutor: Jan Willem Huson.
+-   February 2022-July 2023: Alice Poorthuis, Johan Broersma, Mandy Hazenberg, Paulina Fulneczek, Ties Heesink and their tutor: Jan Wille
 
 -   September 2023-February 2024: Arnfinn Sijbrant, Eva Baan, Jip Mulder, Robert Aalpoel, Sem Lucas, Sterre Regts and their tutor: Jan Willem Huson.
 
