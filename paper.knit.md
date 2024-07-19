@@ -37,7 +37,7 @@ author:
     roles: [writing, editing]
     orcid_id: 0000-0001-7745-5634
     affiliation: Aarhus University
-date: '`r format(Sys.Date(), "%B %d, %Y")`'
+date: 'July 19, 2024'
 output:
   distill::distill_article:
     number_sections: yes
@@ -56,21 +56,7 @@ knit: (function(inputFile, encoding) {
   output_format = "all") })
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(forcats)
-# read data
-pre_surveys <- readRDS("data/pre_workshop_surveys.rds")
-post_surveys <- readRDS("data/post_workshop_surveys.rds")
-# factore levels for charts
-factor_levels <- c("Excellent", "Good", "Sufficient", "Insufficient", "Not shared")
-# readable event names
-event_names <- as_labeller(c("202304_CAA" = "CAA", "202308_EAA" = "EAA", "202310_CAA-DE-NLFl" = "CAA-DE-NLFl", "202311_Reuvensdagen" = "Reuvensdagen", "202311_CAA_UK" = "CAA_UK", "202312_Leiden" = "Leiden", "202401_Aarhus" = "Aarhus"))
 
-```
 
 # Introduction
 
@@ -178,58 +164,23 @@ In the final and fifth tutorial the participant learn smore about how to incorpo
 
 A large proportion of the participants of the workshops gave us information using the survey before the workshops (172 of 368 participants). The respondents came from at least 40 countries that represented almost all continents (see Figure \@ref(fig:nationality). There was a clear skew towards participants from Europe. The number of female respondents slightly outnumbers the male ones and a small group did not share their gender, while two identified as non-binary (see Figure \@ref(fig:gender-age)). The ages of the respondents ranged from below 20 to over 70, although the majority fell between 20 and 40 years old indicating that the audience was predominantly composed of early career archaeologists. It seems that the different events also had a slightly different distribution of both gender and age. For example, more older people attended the workshop at the CAA conference in April 2023 and more men were present during the workshop at the Reuvensdagen in November 2023. This might be due the the differences of audiences at the conferences. For the Reuvensdagen the number of participants of the workshop was relatively low and this variance might be due to chance.
 
-```{r nationality, fig.cap="The nationality of the participants that filled in the survey.", fig.height=5, echo=FALSE}
-ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
-  geom_bar() +  coord_flip() + xlab("Nationality") + scale_x_discrete(limits=rev)
+![(\#fig:nationality)The nationality of the participants that filled in the survey.](paper_files/figure-latex/nationality-1.pdf) 
 
-```
-
-```{r gender-age, fig.cap="The gender and age distribution of the respondents for each workshop", fig.width=11, echo=FALSE}
-ggplot(pre_surveys, aes(x = `What.is.your.age.`, fill = `What.is.your.gender....Selected.Choice`)) +
-  geom_bar() + labs(x= "Age", y="Count", fill = "Gender") + facet_grid(~Workshop, labeller = event_names) +   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
-
-```
+![(\#fig:gender-age)The gender and age distribution of the respondents for each workshop](paper_files/figure-latex/gender-age-1.pdf) 
 
 Most of the respondents reported having a level of computer literacy already including particular computational skills common in archaeology, for example working with word processors, GIS and spreadsheets (see Figure \@ref(fig:computer-skills)), and 111 of the respondents had some prior knowledge of ABM, while 59 were completely new to the subject. The majority (158) had never applied ABM to their research before participating in the workshops with only 14 participants who had experience of developing archaeological ABM. It is interesting to note that many respondents (108) did know what kind of software was available for ABM (see Figure \@ref(fig:abm-knowledge)).
 
-```{r, computer-skills, fig.cap="The computer skills of the respondents.", out.width="50%", echo=FALSE}
-pre_surveys %>%
-  select(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
-  separate_rows(`Which.computer.skills.do.you.have....Selected.Choice`, sep = ',\\s*') %>%
-  filter(`Which.computer.skills.do.you.have....Selected.Choice`!="") %>%
-  group_by(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
-  ggplot(aes(x=`Which.computer.skills.do.you.have....Selected.Choice`)) + geom_bar() +
-    xlab("Computer skills") + coord_flip()
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{paper_files/figure-latex/computer-skills-1} \caption{The computer skills of the respondents.}(\#fig:computer-skills)
+\end{figure}
 
-```{r, abm-knowledge, fig.cap="Respondents knowledge and experience with ABM.", fig.show="hold", out.width="50%", echo=FALSE}
-pre_surveys %>% 
-  filter(`Do.you.know.what.Agent.Based.Modeling.is.`!="Not shared") %>% 
-  ggplot(aes(x = `Do.you.know.what.Agent.Based.Modeling.is.`)) +
-    geom_bar(na.rm = TRUE) + xlab("I know what ABM is") + facet_grid(~Workshop, labeller = event_names)
-pre_surveys %>%
-  select(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
-  filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="") %>%
-  separate_rows(Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice, sep = ',\\s*') %>%
-  group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
-  ggplot(aes(x=`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`)) + geom_bar() +
-  xlab("ABM Software known") + coord_flip()
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{paper_files/figure-latex/abm-knowledge-1} \includegraphics[width=0.5\linewidth]{paper_files/figure-latex/abm-knowledge-2} \caption{Respondents knowledge and experience with ABM.}(\#fig:abm-knowledge)
+\end{figure}
 
 As shown above, the respondents had some knowledge on ABM in general, but did not know how to apply it or had never applied it before. The respondents were also asked how they rated the available knowledge on ABM (Figure \@ref(fig:available-theory)). While 64 of them had no opinion on the subject, a proportion of the respondents (28) answered that they rated the available theory on ABM as limited and only a small group (39) as sufficient or better. This clearly shows the need for more and better educational material.
 
-```{r, available-theory, fig.cap="Respondents optionion on the quality of theory on ABM faceted out by event.", fig.width=11, echo=FALSE}
-pre_surveys %>%
-  select(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`, Workshop) %>%
-  filter(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`!="") %>%
-  mutate(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.` =
-           fct_relevel(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`,
-                       "No opinion", "Limited", "Sufficient", "More than sufficient", "Very good")) %>%
-  ggplot(aes(x = `How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`)) +
-  geom_bar() + xlab("Quality of theory on ABM") + coord_flip() +
-  facet_grid(~Workshop, labeller = event_names)
-```
+![(\#fig:available-theory)Respondents optionion on the quality of theory on ABM faceted out by event.](paper_files/figure-latex/available-theory-1.pdf) 
 
 ## During the workshop
 
@@ -239,32 +190,15 @@ During the workshops the participants worked in a self-paced manner, often on th
 
 A similar proportion of the participants of the workshops gave us information after the workshops (171 of 368 participants).
 
-```{r, rating-workshop, fig.cap="Respondents rating of the workshop in general faceted for each event.", fig.width=11, echo=FALSE}
-post_surveys %>%
-  mutate(How.would.you.rate.the.workshop.in.general. = fct_relevel(How.would.you.rate.the.workshop.in.general., factor_levels)) %>%
-  ggplot(aes(x=How.would.you.rate.the.workshop.in.general.)) + geom_bar() +
-  xlab("Rating of the workshop") + facet_grid(~Workshop, labeller = event_names) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
-```
+![(\#fig:rating-workshop)Respondents rating of the workshop in general faceted for each event.](paper_files/figure-latex/rating-workshop-1.pdf) 
 
 of the respondents were enthusiastic about the teaching material, with the majority rating it as excellent or good. The teachers were rated even higher than the teaching material, with more respondents giving them the *excellent* score (see Figure \@ref(fig:rating-teaching)).
 
 The majority of the respondents (153) were enthusiastic about the teaching material, with the majority rating it as excellent or good. The teachers were even rated better than the teaching material, with more respondents (165) giving them the *excellent* score (see Figure \@ref(fig:rating-teaching)).
 
-```{r, rating-teaching, fig.cap="Respondents rating of the teaching material in general faceted for each event.", fig.width=11, fig.show='hold', out.height="50%", echo=FALSE}
-post_surveys %>%
-  mutate(How.would.you.rate.the.teaching.material. = fct_relevel(How.would.you.rate.the.teaching.material., factor_levels)) %>%
-  ggplot(aes(x=How.would.you.rate.the.teaching.material.)) + geom_bar() +
-  xlab("Rating of the teaching material") + facet_grid(~Workshop, labeller = event_names) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-post_surveys %>%
-  mutate(How.would.you.rate.the.trainers.teachers. = fct_relevel(How.would.you.rate.the.trainers.teachers., factor_levels)) %>%
-  ggplot(aes(x=How.would.you.rate.the.trainers.teachers.)) + geom_bar() +
-  xlab("Rating of the teacher") + facet_grid(~Workshop, labeller = event_names) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
-```
+\begin{figure}
+\includegraphics[height=0.5\textheight]{paper_files/figure-latex/rating-teaching-1} \includegraphics[height=0.5\textheight]{paper_files/figure-latex/rating-teaching-2} \caption{Respondents rating of the teaching material in general faceted for each event.}(\#fig:rating-teaching)
+\end{figure}
 
 Two more open questions were asked to the respondents. The first was aimed at learning what aspects the participants liked in the tutorials (What aspects did you like most?), and the other was aimed at getting feedback to improve the tutorials (What would you like to see changed or what could be better/different?).
 
@@ -274,14 +208,9 @@ We also received feedback on possible improvements. During the first, big event 
 
 We also asked the participants about their intentions in terms of ABM and their professional life. The majority of the respondents - 88%, wanted to apply ABM in the future in their research (Figure \@ref(fig:future-abm)). Some of the respondents were already using ABM in their work. A large group (around 20-30%) was not sure yet how to apply ABM and wanted to read more on the subject or play a bit with the possibilities. Many respondents also shared the context to which they were thinking to apply ABM mentioning topics such as movement of people or goods over land or water, sometimes in relation to trade or other distribution mechanisms. Others thought of demography, social networks, migration or settlement distributions patterns. The natural environment and the interaction with humans in the past was also mentioned frequently, often in relation to GIS and the question of how complimentary these two computational techniques are. The archaeological periods that the participants were interested in were very diverse, ranging from the Paleolithic to the Medieval period.
 
-```{r, future-abm, fig.cap="The respondents reaction to the question if they thing that they will apply ABM in the future.", out.height="50%", echo=FALSE}
-post_surveys %>%
-  filter(!is.na(Do.you.think.that.you.will.apply.ABM.to.your.own.research..If.yes..can.you.elaborate....Selected.Choice)) %>%
-  ggplot(aes(x = 1, fill = `Do.you.think.that.you.will.apply.ABM.to.your.own.research..If.yes..can.you.elaborate....Selected.Choice`)) +
-  geom_bar(na.rm = TRUE) + coord_polar(theta = "y", start=0) + theme_void() +
-  scale_fill_discrete(name = paste0("Will apply ABM in the future (n=", sum(!is.na(post_surveys$Do.you.think.that.you.will.apply.ABM.to.your.own.research..If.yes..can.you.elaborate....Selected.Choice)), ")"),
-                      labels = c("No", "Yes"))
-```
+\begin{figure}
+\includegraphics[height=0.5\textheight]{paper_files/figure-latex/future-abm-1} \caption{The respondents reaction to the question if they thing that they will apply ABM in the future.}(\#fig:future-abm)
+\end{figure}
 
 ## Integration with Learning and Skills Tracking Frameworks
 
