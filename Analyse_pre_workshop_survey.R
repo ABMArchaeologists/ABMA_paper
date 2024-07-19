@@ -38,7 +38,7 @@ replace_nationality <- c("USA" = "American", "United States of America" = "Ameri
                          "Belgianian" = "Belgian", "Albanian " = "Albanian", "British(Scotland)" = "British",
                          "Brazilianian" = "Brazilian", "Dutchand Israeli" = "Dutch", "Macedonian " = "Macedonian",
                          "New Zealanderer" = "New Zealander", "British " = "British", "Egyptian " = "Egyptian",
-                         "English" = "British")
+                         "English" = "British", "British(Scotland)" = "British")
 pre_surveys$What.is.you.nationality....Nationality...Text <- str_replace_all(pre_surveys$What.is.you.nationality....Nationality...Text, replace_nationality)
 pre_surveys$What.is.you.nationality....Nationality...Text[pre_surveys$What.is.you.nationality....Nationality...Text==""] <- "_not shared_"
 
@@ -194,7 +194,7 @@ ggsave("export/preworkshop/age_classes_gender_facet.png", width = 12)
 #nationality
 
 ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
-  geom_bar() +  coord_flip() + xlab("Nationality")
+  geom_bar() +  coord_flip() + xlab("Nationality") + scale_x_discrete(limits=rev)
 ggsave("export/preworkshop/nationality.png")
 
 ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
@@ -202,6 +202,12 @@ ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
   facet_grid(~Workshop)
 ggsave("export/preworkshop/nationality_facet.png", width = 12)
 
+pre_surveys %>%
+  count(`What.is.you.nationality....Nationality...Text`) %>%
+  mutate(`What.is.you.nationality....Nationality...Text` = fct_reorder(`What.is.you.nationality....Nationality...Text`,n)) %>%
+  ggplot(aes(x = `What.is.you.nationality....Nationality...Text`, y= n)) +
+  geom_col() + coord_flip() + xlab("Nationality")
+ggsave("export/preworkshop/nationality_ordered_n.png")
 
 # student
 

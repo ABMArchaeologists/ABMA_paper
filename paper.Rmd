@@ -18,7 +18,7 @@ author:
     roles: [writing, editing, software]
     affiliation: Saxion University of Applied Sciences
   - name: Doug Rocks-Macqueen 
-    orcid_id: 0000
+    orcid_id: 0000-0001-9021-0260
     roles: [writing, editing, software]
     affiliation: Landward Research Teoranta
   - name: Laura van der Knaap 
@@ -35,7 +35,7 @@ author:
     affiliation: Aarhus University
   - name: Adam Pažout
     roles: [writing, editing]
-    orcid_id: 0000
+    orcid_id: 0000-0001-7745-5634
     affiliation: Aarhus University
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 output:
@@ -67,6 +67,8 @@ pre_surveys <- readRDS("data/pre_workshop_surveys.rds")
 post_surveys <- readRDS("data/post_workshop_surveys.rds")
 # factore levels for charts
 factor_levels <- c("Excellent", "Good", "Sufficient", "Insufficient", "Not shared")
+# readable event names
+event_names <- as_labeller(c("202304_CAA" = "CAA", "202308_EAA" = "EAA", "202310_CAA-DE-NLFl" = "CAA-DE-NLFl", "202311_Reuvensdagen" = "Reuvensdagen", "202311_CAA_UK" = "CAA_UK", "202312_Leiden" = "Leiden", "202401_Aarhus" = "Aarhus"))
 
 ```
 
@@ -84,19 +86,19 @@ The project sought to create Open (Open Access and Open Source) Educational Reso
 
 The activities the project implemented were:
 
--   Development of a hands-on vocational training programme, aligned with the recently published *Agent-Based Modelling for Archaeology: Simulating the Complexity of Societies* [@romanowska2021a].
+-   development of a hands-on vocational training programme, aligned with the recently published *Agent-Based Modelling for Archaeology: Simulating the Complexity of Societies* [@romanowska2021a];
 
--   Conversion of the training programme into modular learning resources that are interactive, based on HTML and JavaScript standards.
+-   conversion of the training programme into modular learning resources that are interactive, based on HTML and JavaScript standards;
 
--   Creation of support materials to encourage use of the OERs.
+-   creation of support materials to encourage use of the OERs;
 
--   Creation of how-to guides to help trainers incorporate OERs into their teaching
+-   creation of how-to guides to help trainers incorporate OERs into their teaching;
 
--   Creation of a code and learning materials repository that will allow the project to continue sustainability after the European Union support has ended and to facilitate the creation of an open-source community to manage and improve the OERs in the future.
+-   creation of a code and learning materials repository that will allow the project to continue sustainability after the European Union support has ended and to facilitate the creation of an open-source community to manage and improve the OERs in the future;
 
--   Development of the framework for skills acquisition aligned with the Digital Skills Passport [DOUG: reference]?
+-   development of the framework for skills acquisition aligned with the Digital Skills Passport;
 
--   Promotion through a series of multiplier events.
+-   promotion through a series of multiplier events.
 
 The expected results and outcomes, for the target audience of professional archaeologists, were:
 
@@ -122,7 +124,7 @@ The project team developed five online tutorials. The tutorials were first desig
 
 The ABMA learning materials assume that participants have learning skills at least at a secondary education level. It is suitable for participants with at least some background in archaeology, such as those typical among students after the first year of a Bachelor study in Archaeology, i.e., above EQF levels 4 or 5. In addition, the tutorials are aimed at professionals working in archaeology who have some experience with computer applications. We also assume that learners are proficient in English and have at least the Reading B1 level, but Reading B2 is recommended [@councilofeurope2020]. The tutorials were also developed with a secondary aim to develop learners' general skills in the following competence area's: 1. Information and data literacy, 2. Communication and collaboration, 3. Digital content creation and, 5. Problem solving [@europeancommissionjointresearchcentre2022].
 
-After initial debugging by the project team, the tutorials were tested on a wider sample of participants during several online and in-person events all of which were run by members of the project team. Recognising the difficulty of delivering practical training in an online environment during the online events several members of the team were present which enabled participants to go to break-out rooms with an expert if they needed additional help or wanted to discuss things. Throughout the project we sought feedback from the participants and used it to improve the tutorials prior to the following events. The feedback was obtained through two surveys using Qualtrics. The participants of the events were asked to respond to two surveys: one before the start of the event and one completed after the end of the event. The first survey focused on the background of the participants and their original level of knowledge in relation to ABM (see appendix ... for the questions). At the end of the event the participants were asked to answer a second survey. Questions of this survey were aimed at measuring the effectiveness of the tutorials and getting feedback on the workshop and tutorials (see appendix ... for the questions). For some events participants had to register beforehand and we were able to send the pre-workshop survey by email. At other events no registration was possible or necessary and the pre-workshop survey was given at the start of the event. The post-workshop survey was distributed using QR-codes or links at the end of the event.
+After initial debugging by the project team, the tutorials were tested on a wider sample of participants during several online and in-person events all of which were run by members of the project team. Recognising the difficulty of delivering practical training in an online environment during the online events several members of the team were present which enabled participants to go to break-out rooms with an expert if they needed additional help or wanted to discuss things. Throughout the project we sought feedback from the participants and used it to improve the tutorials prior to the following events. The feedback was obtained through two surveys using Qualtrics. The participants of the events were asked to respond to two surveys: one before the start of the event and one completed after the end of the event. The first survey focused on the background of the participants and their original level of knowledge in relation to ABM (see appendix 1 for the questions). At the end of the event the participants were asked to answer a second survey. Questions of this survey were aimed at measuring the effectiveness of the tutorials and getting feedback on the workshop and tutorials (see appendix 2 for the questions). For some events participants had to register beforehand and we were able to send the pre-workshop survey by email. At other events no registration was possible or necessary and the pre-workshop survey was given at the start of the event. The post-workshop survey was distributed using QR-codes or links at the end of the event.
 
 | Conference or event          | Period                  | Online, in person or hybrid | Number of participants | Number of registrations |
 |---------------|---------------|---------------|---------------|---------------|
@@ -130,7 +132,7 @@ After initial debugging by the project team, the tutorials were tested on a wide
 | EAA Belfast                  | August 2023             | In person                   | 21                     | No registration         |
 | CAA-DE/NL-Fl Online workshop | October 2023            | Online                      | 40                     | 76                      |
 | Reuvensdagen                 | November 2023           | In person                   | 13                     | No registration         |
-| CAA-UK                       | November 2023           | Hybrid                      | 53                     |                         |
+| CAA-UK                       | November 2023           | Hybrid                      | 53                     | No registration         |
 | Leiden (course)              | December 2023           | In person                   | 11                     | No registration         |
 | Aarhus                       | January/February 2024   | Online                      | 176                    | \>500                   |
 | Saxion                       | March 2023-January 2024 | In person                   | 18                     | No registration         |
@@ -176,15 +178,15 @@ In the final and fifth tutorial the participant learn smore about how to incorpo
 
 A large proportion of the participants of the workshops gave us information using the survey before the workshops (172 of 368 participants). The respondents came from at least 40 countries that represented almost all continents (see Figure \@ref(fig:nationality). There was a clear skew towards participants from Europe. The number of female respondents slightly outnumbers the male ones and a small group did not share their gender, while two identified as non-binary (see Figure \@ref(fig:gender-age)). The ages of the respondents ranged from below 20 to over 70, although the majority fell between 20 and 40 years old indicating that the audience was predominantly composed of early career archaeologists. It seems that the different events also had a slightly different distribution of both gender and age. For example, more older people attended the workshop at the CAA conference in April 2023 and more men were present during the workshop at the Reuvensdagen in November 2023. This might be due the the differences of audiences at the conferences. For the Reuvensdagen the number of participants of the workshop was relatively low and this variance might be due to chance.
 
-```{r nationality, fig.cap="The nationality of the participants that filled in the survey.", echo=FALSE}
+```{r nationality, fig.cap="The nationality of the participants that filled in the survey.", fig.height=5, echo=FALSE}
 ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
-  geom_bar() +  coord_flip() + xlab("Nationality")
+  geom_bar() +  coord_flip() + xlab("Nationality") + scale_x_discrete(limits=rev)
 
 ```
 
 ```{r gender-age, fig.cap="The gender and age distribution of the respondents for each workshop", fig.width=11, echo=FALSE}
 ggplot(pre_surveys, aes(x = `What.is.your.age.`, fill = `What.is.your.gender....Selected.Choice`)) +
-  geom_bar() + labs(x= "Age", y="Count", fill = "Gender") + facet_grid(~Workshop) +   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  geom_bar() + labs(x= "Age", y="Count", fill = "Gender") + facet_grid(~Workshop, labeller = event_names) +   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 
 ```
@@ -205,7 +207,7 @@ pre_surveys %>%
 pre_surveys %>% 
   filter(`Do.you.know.what.Agent.Based.Modeling.is.`!="Not shared") %>% 
   ggplot(aes(x = `Do.you.know.what.Agent.Based.Modeling.is.`)) +
-    geom_bar(na.rm = TRUE) + xlab("I know what ABM is") + facet_grid(~Workshop)
+    geom_bar(na.rm = TRUE) + xlab("I know what ABM is") + facet_grid(~Workshop, labeller = event_names)
 pre_surveys %>%
   select(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="") %>%
@@ -226,7 +228,7 @@ pre_surveys %>%
                        "No opinion", "Limited", "Sufficient", "More than sufficient", "Very good")) %>%
   ggplot(aes(x = `How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`)) +
   geom_bar() + xlab("Quality of theory on ABM") + coord_flip() +
-  facet_grid(~Workshop)
+  facet_grid(~Workshop, labeller = event_names)
 ```
 
 ## During the workshop
@@ -241,7 +243,7 @@ A similar proportion of the participants of the workshops gave us information af
 post_surveys %>%
   mutate(How.would.you.rate.the.workshop.in.general. = fct_relevel(How.would.you.rate.the.workshop.in.general., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.workshop.in.general.)) + geom_bar() +
-  xlab("Rating of the workshop") + facet_grid(~Workshop) +
+  xlab("Rating of the workshop") + facet_grid(~Workshop, labeller = event_names) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 ```
@@ -254,12 +256,12 @@ The majority of the respondents (153) were enthusiastic about the teaching mater
 post_surveys %>%
   mutate(How.would.you.rate.the.teaching.material. = fct_relevel(How.would.you.rate.the.teaching.material., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.teaching.material.)) + geom_bar() +
-  xlab("Rating of the teaching material") + facet_grid(~Workshop) +
+  xlab("Rating of the teaching material") + facet_grid(~Workshop, labeller = event_names) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 post_surveys %>%
   mutate(How.would.you.rate.the.trainers.teachers. = fct_relevel(How.would.you.rate.the.trainers.teachers., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.trainers.teachers.)) + geom_bar() +
-  xlab("Rating of the teacher") + facet_grid(~Workshop) +
+  xlab("Rating of the teacher") + facet_grid(~Workshop, labeller = event_names) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 ```
@@ -281,7 +283,11 @@ post_surveys %>%
                       labels = c("No", "Yes"))
 ```
 
-## The Digital Competence Framework for Citizens (2.2)
+## Integration with Learning and Skills Tracking Frameworks
+
+Beyond the creation of the OERs the project also worked on aligning the learning outcomes of the OERs with the Digital Competence Framework for Citizens and the Digital Archaeological Skills Passport.
+
+### The Digital Competence Framework for Citizens (2.2)
 
 As mentioned above, the following competence area's were identified as relevant for the tutorials: 1. Information and data literacy, 2. Communication and collaboration, 3. Digital content creation and, 5. Problem solving [@europeancommissionjointresearchcentre2022]. In these competence area's various competences are developed towards an advanced or even specialised level. A more extensive description of the Digital Competence Framework for Citizens in relation to Agent-Based Modelling for archaeologists is also available [@visser2024].
 
@@ -293,7 +299,38 @@ Competence Area 3. Digital content creation is one of the main competence areas 
 
 Competence Area 5. Problem solving is very important and is closely tied to 3.4 Programming, since programming involves a lot of problem solving but also the general principles of model development that have a prominent place in the educational materials. In addition, the creation of a highly complex ABM consists of problem solving all the time, including development of research questions, conceptualisation of theories, experiment design and validating against data - all of which require creative abilities and high level understanding of the scientific process. All competencies are addressed: 5.1 Solving Technical Problems, is common when writing code, learning about coding, error handling and going from pseudocode to real code. The competence 5.2 Identifying Needs And Technological Responses, is a central issue of the course, while 5.3 Creatively Using Digital Technology is an important aspect of so-called model thinking necessary to develop robust and insightful models. In tutorial 2 various aspects of 5.4 Identifying Digital Competence Gaps, are relevant, since this tutorial force the user to assess their knowledge and skills.
 
-## Digital Skills Passport
+### Digital Skills Passport
+
+An archaeological skills passport is a tool for tracking and verifying the archaeological skills that an individual has. The first passport was created as part of *The Ardnamurchan Transitions Project*, a long running investigation of the archaeology and history of the Ardnamurchan Peninsula, Western Scotland, run by the Universities of Leicester and Manchester, with Archaeology Scotland [@cobb2020]. Since then the passport has spread around the world to countries such as Germany [@karl2019] and the United States. While there are many different versions, in its simplest form it is a log booklet listing skills that others can verify by signing off on their level of competencies. 
+
+A digital skills passport is the same concept as a physical skills passport but it is digitised to overcome some of the drawbacks of a physical skills passport:
+
+-   losing a copy means losing a record;
+
+-   inability to easily share the log;
+
+-   costs of production;
+
+-   ability to verify those signing off on skill levels. 
+
+A trans-Atlantic consortium has been established to create a digital archaeological skills passport. It consists of the professional body in the United States of America, the *Register of Professional Archaeologists* and five archaeological companies in Europe, working and based in Ireland, the United Kingdom, the Netherlands, Germany and France. This is the passport that the ABMA integrate the OERs with. 
+
+Agent Based Modelling (ABM) will be placed within the transferable skills category of the Digital Archaeological Skills Passport. This will be facilitated by the creation of a larger category of Analytical Skills and then a sub-category of modelling:
+
+```         
+38	Analytical Skills
+  38.1 Modelling
+	  38.1.1 Computational Modelling
+	    38.1.1.1 Agent Based Modelling
+	      38.1.1.1.1 Software mastery
+	        38.1.1.1.1.1 Creation of models and understanding of key components
+	         38.1.1.1.1.2 Integration of other fields - GIS, network science
+	      38.1.1.1.2 Analysis and interpretation of results
+	 38.1.2 Mathematical Modelling
+etc.
+```
+
+The digital skills passport has not launched yet, but when it is, it will be found at this url: <https://archaeologypassport.com>.
 
 ## Dissemination of tutorials
 
