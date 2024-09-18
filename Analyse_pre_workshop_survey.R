@@ -144,7 +144,8 @@ pre_surveys %>%
   separate_rows(`Which.computer.skills.do.you.have....Selected.Choice`, sep = ',\\s*') %>%
   filter(`Which.computer.skills.do.you.have....Selected.Choice`!="") %>%
   group_by(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
-  ggplot(aes(x=`Which.computer.skills.do.you.have....Selected.Choice`)) + geom_bar() +
+  mutate(count_skills = n()) %>%
+  ggplot(aes(x=reorder(`Which.computer.skills.do.you.have....Selected.Choice`, count_skills))) + geom_bar() +
     xlab("Computer skills") + coord_flip()
 ggsave("export/preworkshop/computer_skills.png")
 
