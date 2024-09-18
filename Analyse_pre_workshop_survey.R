@@ -4,6 +4,7 @@ library(tidyr)
 library(forcats)
 library(stringr)
 
+# importing data
 CAA_202304 <- read.csv("data/CAA_202304.csv")
 CAA_202304$Workshop <- "202304_CAA"
 EAA_202308 <- read.csv("data/EAA_202308.csv")
@@ -73,6 +74,19 @@ pre_surveys %>%
     geom_bar(na.rm = TRUE) + xlab("I know what ABM is") + facet_grid(~Workshop)
 ggsave("export/preworkshop/ABM_known_facet.png", width = 12)
 
+pre_surveys %>%
+  filter(`Do.you.know.what.Agent.Based.Modeling.is.`!="Not shared") %>%
+  select(Do.you.know.what.Agent.Based.Modeling.is., Workshop) %>%
+  group_by(`Do.you.know.what.Agent.Based.Modeling.is.`, Workshop) %>%
+  mutate(count_response = n()) %>%
+  distinct() %>%
+  ggplot(aes(fill = `Do.you.know.what.Agent.Based.Modeling.is.`, x=Workshop, y = count_response)) +
+  geom_bar(na.rm = TRUE, position="fill", stat="identity") +
+  geom_text(aes(label=count_response), position = position_fill(vjust = 0.5)) +
+  xlab("") +  scale_fill_discrete(name = "I know what ABM is") + ylab("Percentage") +  coord_flip()
+ggsave("export/preworkshop/ABM_known_percent_stacked.png", width = 12)
+
+
 # Theory on ABM
 
 pre_surveys %>%
@@ -105,7 +119,8 @@ pre_surveys %>%
   filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="") %>%
   separate_rows(Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice, sep = ',\\s*') %>%
   group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
-  ggplot(aes(x=`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`)) + geom_bar() +
+  mutate(count_software = n()) %>%
+  ggplot(aes(x=reorder(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`, count_software))) + geom_bar() +
   xlab("ABM Software known") + coord_flip()
 ggsave("export/preworkshop/ABM_software_known.png")
 
@@ -194,8 +209,10 @@ ggsave("export/preworkshop/age_classes_gender_facet.png", width = 12)
 
 #nationality
 
-ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
-  geom_bar() +  coord_flip() + xlab("Nationality") + scale_x_discrete(limits=rev)
+pre_surveys %>%
+  group_by(`What.is.you.nationality....Nationality...Text`) %>%
+  mutate(count_nationality = n()) %>%
+  ggplot(aes(x=reorder(`What.is.you.nationality....Nationality...Text`, count_nationality))) + geom_bar() +  coord_flip() + xlab("Nationality")
 ggsave("export/preworkshop/nationality.png")
 
 ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +

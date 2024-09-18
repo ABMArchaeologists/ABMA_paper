@@ -140,7 +140,7 @@ After initial debugging by the project team, the tutorials were tested on a wide
 
 : Conferences, events and situations were workshops were held at which the tutorials were tested.
 
-The surveys were analysed using R [@rcoreteam2023]. The following packages were used for analyses: ggplot2 [@wickham2016], dplyr [@wickham2023a], tidyr [@wickham2023], forcats[@wickham2023b], lubridate [@grolemund2011] and stringr [@wickham2023c]. The date and the code is available at <https://github.com/ABMArchaeologists/ABMA_paper> and (... insert Zenodo reference...)
+The surveys were analysed using R [@rcoreteam2023]. The following packages were used for analyses: ggplot2 [@wickham2016], dplyr [@wickham2023a], tidyr [@wickham2023], forcats[@wickham2023b], lubridate [@grolemund2011] and stringr [@wickham2023c]. For the sake of reproducibility [@marwick2017] this paper was written in R Markdown (<https://rmarkdown.rstudio.com/>), with data and code available at <https://github.com/ABMArchaeologists/ABMA_paper> (... insert Zenodo reference...)
 
 Over the course of the project three groups of students worked on the project during the Smart Solutions Semester at Saxion University of Applied Sciences. This is an interdisciplinary semester in which students of at least three different study-programmes or disciplines work together on a complex problem/project (<https://www.saxion.edu/business-and-research/collaborate-with-saxion/smart-solutions>). Within the semester students have to come up with new ideas or solutions to help a client with a wicked problem. The backgrounds of the various students we worked with were diverse: Applied Computer Science, Archaeology, Business Management Studies, Creative Business, Creative Media & Game Technologies, and ICT. The aim of involving interdisciplinary groups in the project was to involve students in current research projects, to enable them to learn new things and share their innovative ideas and solutions with us. The students groups were supplementary to the deliverables of the project, but their new ideas were benificial to the project. Their help during workshops was useful, but they also were engaged in developing educational material [@aalpoel2024], testing the tutorials, developing a style for the website [@jutte2024] and other materials.
 
@@ -181,8 +181,10 @@ In the final and fifth tutorial the participant learn smore about how to incorpo
 A large proportion of the participants of the workshops gave us information using the survey before the workshops (172 of 368 participants). The respondents came from at least 40 countries that represented almost all continents (see Figure \@ref(fig:nationality). There was a clear skew towards participants from Europe. The number of female respondents slightly outnumbers the male ones and a small group did not share their gender, while two identified as non-binary (see Figure \@ref(fig:gender-age)). The ages of the respondents ranged from below 20 to over 70, although the majority fell between 20 and 40 years old indicating that the audience was predominantly composed of early career archaeologists. It seems that the different events also had a slightly different distribution of both gender and age. For example, more older people attended the workshop at the CAA conference in April 2023 and more men were present during the workshop at the Reuvensdagen in November 2023. This might be due the the differences of audiences at the conferences. For the Reuvensdagen the number of participants of the workshop was relatively low and this variance might be due to chance.
 
 ```{r nationality, fig.cap="The nationality of the participants that filled in the survey.", fig.height=5, echo=FALSE}
-ggplot(pre_surveys, aes(x = `What.is.you.nationality....Nationality...Text`)) +
-  geom_bar() +  coord_flip() + xlab("Nationality") + scale_x_discrete(limits=rev)
+pre_surveys %>% 
+  group_by(`What.is.you.nationality....Nationality...Text`) %>% 
+  mutate(count_nationality = n()) %>%
+  ggplot(aes(x=reorder(`What.is.you.nationality....Nationality...Text`, count_nationality))) + geom_bar() +  coord_flip() + xlab("Nationality") 
 
 ```
 
@@ -206,18 +208,24 @@ pre_surveys %>%
     xlab("Computer skills") + coord_flip()
 ```
 
-```{r, abm-knowledge, fig.cap="Respondents knowledge and experience with ABM.", fig.show="hold", out.width="50%", echo=FALSE}
-pre_surveys %>% 
-  filter(`Do.you.know.what.Agent.Based.Modeling.is.`!="Not shared") %>% 
-  ggplot(aes(x = `Do.you.know.what.Agent.Based.Modeling.is.`)) +
-    geom_bar(na.rm = TRUE) + xlab("I know what ABM is") + facet_grid(~Workshop, labeller = event_names)
+```{r, abm-knowledge, fig.cap="Respondents knowledge of ABM per event knowledge of the various softwares for ABM, before participating in the workshops.", fig.show="hold", out.width="50%", echo=FALSE}
+pre_surveys %>%
+  filter(`Do.you.know.what.Agent.Based.Modeling.is.`!="Not shared") %>%
+  select(Do.you.know.what.Agent.Based.Modeling.is., Workshop) %>%
+  group_by(`Do.you.know.what.Agent.Based.Modeling.is.`, Workshop) %>%
+  mutate(count_response = n()) %>%
+  distinct() %>%
+  ggplot(aes(fill = `Do.you.know.what.Agent.Based.Modeling.is.`, x=Workshop, y = count_response)) +
+  geom_bar(na.rm = TRUE, position="fill", stat="identity") +
+  geom_text(aes(label=count_response), position = position_fill(vjust = 0.5), size = 2.5, colour = "grey41") + scale_x_discrete(labels = c("CAA", "EAA", "CAA-DE-NLFl", "Reuvensdagen", "CAA_UK", "Leiden", "Aarhus")) +
+  xlab("") + scale_fill_discrete(name = "ABM known") + ylab("Percentage") +  scale_y_continuous(labels = scales::label_percent(scale = 100, prefix = "", suffix = "")) + coord_flip()
 pre_surveys %>%
   select(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="") %>%
   separate_rows(Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice, sep = ',\\s*') %>%
   group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
-  ggplot(aes(x=`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`)) + geom_bar() +
-  xlab("ABM Software known") + coord_flip()
+    mutate(count_software = n()) %>%
+  ggplot(aes(x=reorder(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`, count_software))) + geom_bar() + scale_x_discrete(labels = ) + xlab("ABM Software known") + coord_flip()
 ```
 
 As shown above, the respondents had some knowledge on ABM in general, but did not know how to apply it or had never applied it before. The respondents were also asked how they rated the available knowledge on ABM (Figure \@ref(fig:available-theory)). While 64 of them had no opinion on the subject, a proportion of the respondents (28) answered that they rated the available theory on ABM as limited and only a small group (39) as sufficient or better. This clearly shows the need for more and better educational material.
@@ -275,16 +283,7 @@ The respondents generally liked the interactive step-by-step way of going throug
 
 We also received feedback on possible improvements. During the first workshop, the CAA-conference in Amsterdam in April 2023, we did the first test of the tutorials and we also instructed the participants that this was work in progress. For this and the following few workshops we mostly received feedback about bugs causing the tutorial to crash or creating unexpected behaviour. The number of references to bugs reduced to zero by the end of the project and participants started providing other feedback, for example the wish to see more examples or expanding the tutorials further. Some wanted to introduce more cooperation between participants, which we did not consider primarily aiming the tutorials for individual work. A more cooperative aspect of the education materials is possible, even if harder for online events, and we hope that a wider classroom use of the ABMA materials may deliver solutions. It was also interesting to note that over time more and more people did not see any additional room for improvement indicating that the level, content and format of the tutorials met their needs.
 
-We also asked the participants about their intentions in terms of ABM and their professional life. The majority of the respondents - 88%, wanted to apply ABM in the future in their research (Figure \@ref(fig:future-abm)). Some of the respondents were already using ABM in their work. A large group (around 20-30%) was not sure yet how to apply ABM and wanted to read more on the subject or play a bit with the possibilities. Many respondents also shared the context to which they were thinking to apply ABM mentioning topics such as movement of people or goods over land or water, sometimes in relation to trade or other distribution mechanisms. Others thought of demography, social networks, migration or settlement distributions patterns. The natural environment and the interaction with humans in the past was also mentioned frequently, often in relation to GIS and the question of how complimentary these two computational techniques are. The archaeological periods that the participants were interested in were very diverse, ranging from the Paleolithic to the Medieval period.
-
-```{r, future-abm, fig.cap="The respondents reaction to the question if they thing that they will apply ABM in the future.", out.height="50%", echo=FALSE}
-post_surveys %>%
-  filter(!is.na(Do.you.think.that.you.will.apply.ABM.to.your.own.research..If.yes..can.you.elaborate....Selected.Choice)) %>%
-  ggplot(aes(x = 1, fill = `Do.you.think.that.you.will.apply.ABM.to.your.own.research..If.yes..can.you.elaborate....Selected.Choice`)) +
-  geom_bar(na.rm = TRUE) + coord_polar(theta = "y", start=0) + theme_void() +
-  scale_fill_discrete(name = paste0("Will apply ABM in the future (n=", sum(!is.na(post_surveys$Do.you.think.that.you.will.apply.ABM.to.your.own.research..If.yes..can.you.elaborate....Selected.Choice)), ")"),
-                      labels = c("No", "Yes"))
-```
+We also asked the participants about their intentions in terms of ABM and their professional life. The majority of the respondents - 88%, wanted to apply ABM in the future in their research. Some of the respondents were already using ABM in their work. A large group (around 20-30%) was not sure yet how to apply ABM and wanted to read more on the subject or play a bit with the possibilities. Many respondents also shared the context to which they were thinking to apply ABM mentioning topics such as movement of people or goods over land or water, sometimes in relation to trade or other distribution mechanisms. Others thought of demography, social networks, migration or settlement distributions patterns. The natural environment and the interaction with humans in the past was also mentioned frequently, often in relation to GIS and the question of how complimentary these two computational techniques are. The archaeological periods that the participants were interested in were very diverse, ranging from the Paleolithic to the Medieval period.
 
 ## Integration with Learning and Skills Tracking Frameworks
 
