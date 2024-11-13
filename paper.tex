@@ -100,7 +100,7 @@
 
 \title{Lessons learned: creating tutorials teaching Agent-Based Modelling for Archaeologists}
 \author{}
-\date{\vspace{-2.5em}November 12, 2024}
+\date{\vspace{-2.5em}November 13, 2024}
 
 \begin{document}
 \maketitle
@@ -209,7 +209,7 @@ Saxion & March 2023-January 2024 & In person & 18 & No registration\\
 \end{tabular}
 \end{table}
 
-The surveys were analysed using R (R Core Team 2023). The following packages were used for analyses: ggplot2 (Wickham 2016), dplyr (Wickham et al. 2023), tidyr (Wickham, Vaughan and Girlich 2023), forcats(Wickham 2023a), lubridate (Grolemund and Wickham 2011) and stringr (Wickham 2023b). For the sake of reproducibility (Marwick 2017) this paper was written in R Markdown (\url{https://rmarkdown.rstudio.com/}), with data and code available at \url{https://github.com/ABMArchaeologists/ABMA_paper} (\ldots{} insert Zenodo reference\ldots)
+The surveys were analysed using R (R Core Team 2023). The following packages were used for analyses: ggplot2 (Wickham 2016), dplyr (Wickham et al. 2023), tidyr (Wickham, Vaughan and Girlich 2023), forcats(Wickham 2023a), lubridate (Grolemund and Wickham 2011) and stringr (Wickham 2023b). For the sake of reproducibility (Marwick 2017) this paper was written in R Markdown (\url{https://rmarkdown.rstudio.com/}), with data and code available at \url{https://github.com/ABMArchaeologists/ABMA_paper} (Visser et al. 2024a).
 
 Over the course of the project three groups of students worked on the project during the Smart Solutions Semester at Saxion University of Applied Sciences. This is an interdisciplinary semester in which students of at least three different study-programmes or disciplines work together on a complex problem/project (\url{https://www.saxion.edu/business-and-research/collaborate-with-saxion/smart-solutions}). Within the semester students have to come up with new ideas or solutions to help a client with a wicked, or at least challenging, problem. The backgrounds of the various students we worked with were diverse: Applied Computer Science, Archaeology, Business Management Studies, Creative Business, Creative Media \& Game Technologies, and ICT. The aim of involving interdisciplinary groups in the project was to involve students in current research projects, to enable them to learn new things and share their innovative ideas and solutions with us. The students groups were supplementary to the deliverables of the project, but their new ideas were beneficial to the project. Their help during workshops was useful, but they also were engaged in developing educational material (Aalpoel et al. 2024), testing the tutorials, developing a style for the website (Jutte et al. 2024) and other materials.
 
@@ -277,7 +277,9 @@ Most of the respondents reported having a level of computer literacy already inc
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{paper_files/figure-latex/abm-knowledge-1} \includegraphics[width=0.5\linewidth]{paper_files/figure-latex/abm-knowledge-2} \caption{Respondents knowledge of ABM per event knowledge of the various softwares for ABM, before participating in the workshops.}\label{fig:abm-knowledge}
+\centering
+\includegraphics{paper_files/figure-latex/abm-knowledge-1.pdf}
+\caption{\label{fig:abm-knowledge}Respondents knowledge of ABM per event (top), and knowledge of the various softwares for ABM (bottom), before participating in the workshops.}
 \end{figure}
 
 As shown above, the respondents had some knowledge on ABM in general, but did not know how to apply it or had never applied it before. The respondents were also asked how they rated the available resources on ABM (Figure \ref{fig:available-theory}). While 64 of them had no opinion on the subject, a proportion of the respondents (28) answered that they rated the available theory on ABM as limited and only a small group (39) as sufficient or better. This clearly shows the need for more and better educational material.
@@ -311,7 +313,9 @@ A similar proportion of the participants of the workshops gave us information af
 The majority of the respondents (153) were enthusiastic about the teaching materials, with the majority rating them as excellent or good. The teachers were rated even better than the teaching materials, with more respondents (165) giving them the \emph{excellent} score (see Figure \ref{fig:rating-teaching}).
 
 \begin{figure}
-\includegraphics[height=0.5\textheight]{paper_files/figure-latex/rating-teaching-1} \includegraphics[height=0.5\textheight]{paper_files/figure-latex/rating-teaching-2} \caption{Respondents rating of the teaching material in general faceted for each event.}\label{fig:rating-teaching}
+\centering
+\includegraphics{paper_files/figure-latex/rating-teaching-1.pdf}
+\caption{\label{fig:rating-teaching}Respondents rating of the teaching material (top) and teachers (bottom) in general faceted for each event.}
 \end{figure}
 
 Two more open questions were asked to the respondents. The first was aimed at learning what aspects the participants liked in the tutorials (What aspects did you like most?), and the other was aimed at getting feedback to improve the tutorials (What would you like to see changed or what could be better/different?).
@@ -330,7 +334,7 @@ Beyond the creation of the OERs the project also worked on aligning the learning
 \hypertarget{the-digital-competence-framework-for-citizens-2.2}{%
 \subsubsection{The Digital Competence Framework for Citizens (2.2)}\label{the-digital-competence-framework-for-citizens-2.2}}
 
-As mentioned above, the following competence areas were identified as relevant for the tutorials: 1. Information and data literacy, 2. Communication and collaboration, 3. Digital content creation and, 5. Problem solving (European Commission, Joint Research Centre et al. 2022). In these competence areas various competences are developed towards an advanced or even specialised level. A more extensive description of the Digital Competence Framework for Citizens in relation to Agent-Based Modelling for archaeologists is available elsewhere (Visser et al. 2024).
+As mentioned above, the following competence areas were identified as relevant for the tutorials: 1. Information and data literacy, 2. Communication and collaboration, 3. Digital content creation and, 5. Problem solving (European Commission, Joint Research Centre et al. 2022). In these competence areas various competences are developed towards an advanced or even specialised level. A more extensive description of the Digital Competence Framework for Citizens in relation to Agent-Based Modelling for archaeologists is available elsewhere (Visser et al. 2024b).
 
 For competence area 1. Information and data literacy: the tutorials mainly address 1.2 Evaluating Data, Information And Digital Content and 1.3 Managing Data, Information And Digital Content. In the ABMA educational materials, users learn about working with data, being critical of their digital content and how to model and manage the data in the context of an ABM. For tutorial 2 the user is expected to be able to find information using the NetLogo(Web) dictionary (\url{http://ccl.northwestern.edu/netlogo/bind/} or \url{http://ccl.northwestern.edu/netlogo/docs/dictionary.html}).
 
@@ -468,8 +472,11 @@ Romanowska, I, Wren, CD and Crabtree, SA. 2021. \emph{\href{https://www.sfipress
 \leavevmode\vadjust pre{\hypertarget{ref-scherjon2019}{}}%
 Scherjon, F, Romanowska, I and Lambers, K. 2019 Digitally Teaching Digital Skills: Lessons Drawn from a Small Private Online Course (SPOC) on {`}Modelling and Simulation in Archaeology{'} at Leiden University. \emph{Journal of Computer Applications in Archaeology} 2(1): 7988. DOI: https://doi.org/\href{https://doi.org/10.5334/jcaa.26}{10.5334/jcaa.26}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-visser}{}}%
+Visser, RM, Jutte, A, Rocks-Macqueen, D, Romanowska, I, Brughmans, T, Knaap, L van der, Lambers, K, Aitchison, K, Linssen, J and Pažout, A. 2024a \emph{ABMA: Lessons learned. Data and source code}. DOI: https://doi.org/\href{https://doi.org/10.5281/zenodo.14134218}{10.5281/zenodo.14134218}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-visser2024}{}}%
-Visser, RM, Lambers, K, Aitchison, K, Jutte, A, Rocks-Macqueen, D, Knaap, L van der, Romanowska, I and Brughmans, T. 2024 \emph{The Digital Competence Framework for Citizens (2.2) and Agent-Based modelling for Archaeologists}. DOI: https://doi.org/\href{https://doi.org/10.5281/zenodo.11046488}{10.5281/zenodo.11046488}.
+Visser, RM, Lambers, K, Aitchison, K, Jutte, A, Rocks-Macqueen, D, Knaap, L van der, Romanowska, I and Brughmans, T. 2024b \emph{The Digital Competence Framework for Citizens (2.2) and Agent-Based modelling for Archaeologists}. DOI: https://doi.org/\href{https://doi.org/10.5281/zenodo.11046488}{10.5281/zenodo.11046488}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-wickham2016}{}}%
 Wickham, H. 2016. \emph{\href{http://ggplot2.org}{ggplot2: Elegant graphics for data analysis}}. Springer-Verlag New York.

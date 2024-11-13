@@ -66,6 +66,7 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(forcats)
+library(ggpubr)
 # read data
 pre_surveys <- readRDS("data/pre_workshop_surveys.rds")
 post_surveys <- readRDS("data/post_workshop_surveys.rds")
@@ -139,7 +140,7 @@ After initial debugging by the project team, the tutorials were tested on a wide
 knitr::kable(events, align = "l", col.names = c("Conference or event", "Period", "Online, in person or hybrid", "Number of participants", "Number of registrations")) 
 ```
 
-The surveys were analysed using R [@rcoreteam2023]. The following packages were used for analyses: ggplot2 [@wickham2016], dplyr [@wickham2023a], tidyr [@wickham2023], forcats[@wickham2023b], lubridate [@grolemund2011] and stringr [@wickham2023c]. For the sake of reproducibility [@marwick2017] this paper was written in R Markdown (<https://rmarkdown.rstudio.com/>), with data and code available at <https://github.com/ABMArchaeologists/ABMA_paper> (... insert Zenodo reference...)
+The surveys were analysed using R [@rcoreteam2023]. The following packages were used for analyses: ggplot2 [@wickham2016], dplyr [@wickham2023a], tidyr [@wickham2023], forcats[@wickham2023b], lubridate [@grolemund2011] and stringr [@wickham2023c]. For the sake of reproducibility [@marwick2017] this paper was written in R Markdown (<https://rmarkdown.rstudio.com/>), with data and code available at <https://github.com/ABMArchaeologists/ABMA_paper> [@visser].
 
 Over the course of the project three groups of students worked on the project during the Smart Solutions Semester at Saxion University of Applied Sciences. This is an interdisciplinary semester in which students of at least three different study-programmes or disciplines work together on a complex problem/project (<https://www.saxion.edu/business-and-research/collaborate-with-saxion/smart-solutions>). Within the semester students have to come up with new ideas or solutions to help a client with a wicked, or at least challenging, problem. The backgrounds of the various students we worked with were diverse: Applied Computer Science, Archaeology, Business Management Studies, Creative Business, Creative Media & Game Technologies, and ICT. The aim of involving interdisciplinary groups in the project was to involve students in current research projects, to enable them to learn new things and share their innovative ideas and solutions with us. The students groups were supplementary to the deliverables of the project, but their new ideas were beneficial to the project. Their help during workshops was useful, but they also were engaged in developing educational material [@aalpoel2024], testing the tutorials, developing a style for the website [@jutte2024] and other materials.
 
@@ -209,8 +210,8 @@ pre_surveys %>%
     xlab("Computer skills") + coord_flip()
 ```
 
-```{r, abm-knowledge, fig.cap="Respondents knowledge of ABM per event knowledge of the various softwares for ABM, before participating in the workshops.", fig.show="hold", out.width="50%", echo=FALSE}
-pre_surveys %>%
+```{r, abm-knowledge, fig.cap="Respondents knowledge of ABM per event (top), and knowledge of the various softwares for ABM (bottom), before participating in the workshops.", echo=FALSE}
+knowledge_plot <- pre_surveys %>%
   filter(`Do.you.know.what.Agent.Based.Modeling.is.`!="Not shared") %>%
   select(Do.you.know.what.Agent.Based.Modeling.is., Workshop) %>%
   group_by(`Do.you.know.what.Agent.Based.Modeling.is.`, Workshop) %>%
@@ -220,13 +221,14 @@ pre_surveys %>%
   geom_bar(na.rm = TRUE, position="fill", stat="identity") +
   geom_text(aes(label=count_response), position = position_fill(vjust = 0.5), size = 2.5, colour = "grey41") + scale_x_discrete(labels = c("CAA", "EAA", "CAA-DE-NLFl", "Reuvensdagen", "CAA_UK", "Leiden", "Aarhus")) +
   xlab("") + scale_fill_discrete(name = "ABM known") + ylab("Percentage") +  scale_y_continuous(labels = scales::label_percent(scale = 100, prefix = "", suffix = "")) + coord_flip()
-pre_surveys %>%
+software_plot <- pre_surveys %>%
   select(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="") %>%
   separate_rows(Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice, sep = ',\\s*') %>%
   group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
     mutate(count_software = n()) %>%
   ggplot(aes(x=reorder(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`, count_software))) + geom_bar() + scale_x_discrete(labels = ) + xlab("ABM Software known") + coord_flip()
+ggarrange(knowledge_plot, software_plot, nrow = 2, ncol = 1)
 ```
 
 As shown above, the respondents had some knowledge on ABM in general, but did not know how to apply it or had never applied it before. The respondents were also asked how they rated the available resources on ABM (Figure \@ref(fig:available-theory)). While 64 of them had no opinion on the subject, a proportion of the respondents (28) answered that they rated the available theory on ABM as limited and only a small group (39) as sufficient or better. This clearly shows the need for more and better educational material.
@@ -266,18 +268,18 @@ post_surveys %>%
 
 The majority of the respondents (153) were enthusiastic about the teaching materials, with the majority rating them as excellent or good. The teachers were rated even better than the teaching materials, with more respondents (165) giving them the *excellent* score (see Figure \@ref(fig:rating-teaching)).
 
-```{r, rating-teaching, fig.cap="Respondents rating of the teaching material in general faceted for each event.", fig.width=11, fig.show='hold', out.height="50%", echo=FALSE}
-post_surveys %>%
+```{r, rating-teaching, fig.cap="Respondents rating of the teaching material (top) and teachers (bottom) in general faceted for each event.", fig.width=11, fig.height=8, echo=FALSE}
+rate_material_plot <- post_surveys %>%
   mutate(How.would.you.rate.the.teaching.material. = fct_relevel(How.would.you.rate.the.teaching.material., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.teaching.material.)) + geom_bar() +
   xlab("Rating of the teaching material") + facet_grid(~Workshop, labeller = event_names) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-post_surveys %>%
+rate_teacher_plot <- post_surveys %>%
   mutate(How.would.you.rate.the.trainers.teachers. = fct_relevel(How.would.you.rate.the.trainers.teachers., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.trainers.teachers.)) + geom_bar() +
   xlab("Rating of the teacher") + facet_grid(~Workshop, labeller = event_names) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
+ggarrange(rate_material_plot, rate_teacher_plot, nrow = 2, ncol = 1)
 ```
 
 Two more open questions were asked to the respondents. The first was aimed at learning what aspects the participants liked in the tutorials (What aspects did you like most?), and the other was aimed at getting feedback to improve the tutorials (What would you like to see changed or what could be better/different?).
