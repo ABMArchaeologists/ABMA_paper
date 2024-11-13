@@ -4,26 +4,26 @@ authors:
   - family-names: Visser
     given-names: Ronald M.
     orcid: https://orcid.org/0000-0001-6966-1729
-  - family-names: Jutte
-    given-names: Annemarie
-    orcid: https://orcid.org/0009-0004-9322-0674
-  - family-names: Rocks-Macqueen
-    given-names: Doug
-    orcid: https://orcid.org/0000-0001-9021-0260
-  - family-names: Romanowska
-    given-names: Iza
-    orcid: https://orcid.org/0000-0002-9487-2111
-  - family-names: Brughmans
-    given-names: Tom
-    orcid: https://orcid.org/0000-0002-1589-7768
-  - family-names: van der Knaap
-    given-names: Laura
   - family-names: Lambers
     given-names: Karsten
     orcid: https://orcid.org/0000-0001-6432-0925
   - family-names: Aitchison
     given-names: Kenneth
     orcid: https://orcid.org/0000-0001-6594-1408
+  - family-names: Jutte
+    given-names: Annemarie
+    orcid: https://orcid.org/0009-0004-9322-0674
+  - family-names: Rocks-Macqueen
+    given-names: Doug
+    orcid: https://orcid.org/0000-0001-9021-0260
+  - family-names: van der Knaap
+    given-names: Laura
+  - family-names: Romanowska
+    given-names: Iza
+    orcid: https://orcid.org/0000-0002-9487-2111
+  - family-names: Brughmans
+    given-names: Tom
+    orcid: https://orcid.org/0000-0002-1589-7768
   - family-names: Linssen
     given-names: Jeroen
     orcid: https://orcid.org/0000-0002-2626-1837
