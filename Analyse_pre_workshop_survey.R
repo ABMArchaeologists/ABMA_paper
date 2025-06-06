@@ -57,12 +57,18 @@ ggsave("export/preworkshop/ABM_theory_quality_facet.png", width = 12)
 
 # ABM software
 
+# repondents knowing at least one kind of software for ABM
+pre_surveys %>%
+  select(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
+  filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="") %>%
+  filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="None")
 
 
 pre_surveys %>%
   select(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="") %>%
   separate_rows(Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice, sep = ',\\s*') %>%
+  filter(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`!="None") %>%
   group_by(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`) %>%
   mutate(count_software = n()) %>%
   ggplot(aes(x=reorder(`Which.software.do.you.know.for.Agent.Based.Modeling....Selected.Choice`, count_software))) + geom_bar() +
