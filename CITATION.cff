@@ -31,7 +31,7 @@ authors:
     given-names: Adam
     orcid: https://orcid.org/0000-0001-7745-5634
 title: "ABMA: Lessons learned. Data and source code"
-version: 1.0
-date-released: 2024-11-13
-doi: https://doi.org/10.5281/zenodo.14134218
+version: 2.0
+date-released: 2025-06-20
+doi: https://doi.org/10.5281/zenodo.15705890
 url: https://github.com/ABMArchaeologists/ABMA_paper
