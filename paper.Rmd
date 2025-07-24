@@ -394,6 +394,6 @@ This last group, we want to thank for providing us with the website on which the
 
 We had help from many people during the various workshops and we would like to thank them for their help (in alphabetical order of their first name): Adéla Sobotkova, Agnes Schneider, Alice Poorthuis, Eduardo Herrera Malatesta, Jens Emil Bødstrup Christoffersen, Johan Broersma, Magnus Lindholm Nielsen, Mandy Hazenberg, María Coto Sarmiento, Paulina Fulneczek, Petra Hermankova, Ties Heesink. We also want to thank all the participants of our workshops.
 
-We thank our two reviewers Dries Daems and Andreas Angourakis for their valuable comments and suggestions that have improved this paper. We thank James Allison for his rol as recommender for PCI Archaeology, contributing to enhancing the quality of the paper.
+We thank our two reviewers Dries Daems and Andreas Angourakis for their valuable comments and suggestions that have improved this paper. We thank James Allison for his rol as recommender for PCI Archaeology, contributing to enhancing the quality of the paper [@allison2025]. A preprint version of this article has been peer-reviewed and recommended by PCI Archaeo (<https://doi.org/10.24072/pci.archaeo.100596>).
 
 # References
