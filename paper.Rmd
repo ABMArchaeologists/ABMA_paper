@@ -42,10 +42,13 @@ authors:
     orcid_id: 0000-0001-7745-5634
     affiliation: Aarhus University
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
+keywords: ["agent-based modelling", "education", "open educational resources", "archaeological skills", "computational skills", "simulation", "teaching"]
+abstract: "Agent-based modelling (ABM) is one of the most widely applied computational modelling research techniques in archaeology, because it is well suited to the questions asked by archaeologists. However, the access to vocational training for ABM is limited. In this paper we present the Open Educational Resources (OER) that we produced in an international cooperation. For this purpose, we created online and open tutorials for ABM for archaeologists. In addition, how-to guides and support material were created, both for teachers and students. The materials adhere to international (European) standards in relation to education and the Digital Skills Passport for archaeology. The teaching materials have been well tested using a diverse group of archaeologists during various international conferences and meetings. It was shown that the knowledge and skills of the participants in relation to ABM improved. In addition, the demand for the teaching materials and the workshops was high, ensuring that the tutorials on ABM will be used in the future."
 output:
   distill::distill_article:
     number_sections: yes
     fig_caption: yes
+    keep_md: yes
   bookdown::pdf_document2:
     number_sections: yes
     keep_tex: true
@@ -77,10 +80,6 @@ event_names <- as_labeller(c("202304_CAA" = "CAA", "202308_EAA" = "EAA", "202310
 events <- read.csv("data/events.csv", sep = ";")
 
 ```
-
-**Abstract**
-
-Agent-based modelling (ABM) is one of the most widely applied computational modelling research techniques in archaeology, because it is well suited to the questions asked by archaeologists. However, the access to vocational training for ABM is limited. In this paper we present the Open Educational Resources (OER) that we produced in an international cooperation. For this purpose, we created online and open tutorials for ABM for archaeologists. In addition, how-to guides and support material were created, both for teachers and students. The materials adhere to international (European) standards in relation to education and the Digital Skills Passport for archaeology. The teaching materials have been well tested using a diverse group of archaeologists during various international conferences and meetings. It was shown that the knowledge and skills of the participants in relation to ABM improved. In addition, the demand for the teaching materials and the workshops was high, ensuring that the tutorials on ABM will be used in the future.
 
 # Introduction
 
@@ -196,7 +195,7 @@ The tutorials were tested during various workshops and updated afterwards. As me
 
 A large proportion of the participants in the workshops gave us information using the survey before the workshops (172 of 368 participants). The respondents came from at least 40 countries that represented almost all continents (see Figure \@ref(fig:nationality)). There was a clear skew towards participants from Europe. The number of female respondents slightly outnumbered the male ones, and a small group did not share their gender, while two identified as non-binary (see Figure \@ref(fig:gender-age)). The ages of the respondents ranged from below 20 to over 70, although the majority fell between 20 and 40 years of age, indicating that the audience was predominantly composed of early career archaeologists. It seems that the different events also had a slightly different distribution of both gender and age. For example, more older people attended the workshop at the CAA conference in April 2023, and more men were present during the workshop at the Reuvensdagen in November 2023. This might be due to the differences of audiences at the conferences. For the Reuvensdagen the number of participants of the workshop was relatively low and this variance might be due to chance.
 
-```{r nationality, fig.cap="The nationality of the participants that filled in the survey.", fig.height=5, echo=FALSE}
+```{r nationality, dpi=600, fig.cap="The nationality of the participants that filled in the survey.", fig.height=5, echo=FALSE}
 pre_surveys %>% 
   group_by(`What.is.you.nationality....Nationality...Text`) %>% 
   mutate(count_nationality = n()) %>%
@@ -204,7 +203,7 @@ pre_surveys %>%
 
 ```
 
-```{r gender-age, fig.cap="The gender and age distribution of the respondents for each workshop.", fig.width=11, echo=FALSE}
+```{r gender-age, dpi=600, fig.cap="The gender and age distribution of the respondents for each workshop.", fig.width=11, echo=FALSE}
 ggplot(pre_surveys, aes(x = `What.is.your.age.`, fill = `What.is.your.gender....Selected.Choice`)) +
   geom_bar() + labs(x= "Age", y="Count", fill = "Gender") + facet_grid(~Workshop, labeller = event_names) +   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
@@ -213,7 +212,7 @@ ggplot(pre_surveys, aes(x = `What.is.your.age.`, fill = `What.is.your.gender....
 
 Most of the respondents reported having a level of computer literacy already including particular computational skills common in archaeology, for example working with word processors, GIS and spreadsheets (see Figure \@ref(fig:computer-skills)), and 111 of the respondents had some prior knowledge of ABM, while 59 were completely new to the subject. The majority (158) had never applied ABM to their research before participating in the workshops with only 14 participants who had experience of developing archaeological ABM. It is interesting to note that many respondents (75) could mention at least one type of software to be used for ABM (see Figure \@ref(fig:abm-knowledge)).
 
-```{r, computer-skills, fig.cap="The computer skills of the respondents.", out.width="50%", echo=FALSE}
+```{r, computer-skills, dpi=600, fig.cap="The computer skills of the respondents.", out.width="50%", echo=FALSE}
 pre_surveys %>%
   select(`Which.computer.skills.do.you.have....Selected.Choice`) %>%
   separate_rows(`Which.computer.skills.do.you.have....Selected.Choice`, sep = ',\\s*') %>%
@@ -224,7 +223,7 @@ pre_surveys %>%
     xlab("Computer skills") + coord_flip()
 ```
 
-```{r, abm-knowledge, fig.cap="Respondents knowledge of ABM per event (top), and knowledge of the various softwares for ABM (bottom), before participating in the workshops.", echo=FALSE}
+```{r, abm-knowledge, dpi=600, fig.cap="Respondents knowledge of ABM per event (top), and knowledge of the various softwares for ABM (bottom), before participating in the workshops.", echo=FALSE}
 knowledge_plot <- pre_surveys %>%
   filter(`Do.you.know.what.Agent.Based.Modeling.is.`!="Not shared") %>%
   select(Do.you.know.what.Agent.Based.Modeling.is., Workshop) %>%
@@ -248,7 +247,7 @@ ggarrange(knowledge_plot, software_plot, nrow = 2, ncol = 1)
 
 As shown above, the respondents had some knowledge on ABM in general, but did not know how to apply it or had never applied it before. The respondents were also asked how they rated the available theory on ABM (Figure \@ref(fig:available-theory)). While 64 of them had no opinion on the subject, a proportion of the respondents (28) answered that they rated the available theory on ABM as limited and only a small group (39) as sufficient or better. This clearly shows the need for more and better educational material.
 
-```{r, available-theory, fig.cap="Respondents opinion on the quality of theory on ABM faceted out by event.", fig.width=11, echo=FALSE}
+```{r, available-theory, dpi=600, fig.cap="Respondents opinion on the quality of theory on ABM faceted out by event.", fig.width=11, echo=FALSE}
 pre_surveys %>%
   select(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`, Workshop) %>%
   filter(`How.do.you.judge.the.available.theory.on.Agent.Based.Modelling.`!="") %>%
@@ -273,7 +272,7 @@ knitr::include_graphics("figures/CollageWorkshops.jpg")
 
 A similar proportion of the participants in the workshops gave us feedback after the workshops (171 of 368 participants).
 
-```{r, rating-workshop, fig.cap="Respondents rating of the workshop in general faceted for each event.", fig.width=11, echo=FALSE}
+```{r, rating-workshop, dpi=600, fig.cap="Respondents rating of the workshop in general faceted for each event.", fig.width=11, echo=FALSE}
 post_surveys %>%
   mutate(How.would.you.rate.the.workshop.in.general. = factor(How.would.you.rate.the.workshop.in.general., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.workshop.in.general.)) + geom_bar() +
@@ -285,7 +284,7 @@ post_surveys %>%
 
 Most respondents (153) were enthusiastic about the teaching materials, with the majority rating them as excellent or good. The teachers were rated even better than the teaching materials, with most respondents (165) giving them an *excellent* score (see Figure \@ref(fig:rating-teaching)).
 
-```{r, rating-teaching, fig.cap="Respondents rating of the teaching material (top) and teachers (bottom) in general faceted for each event.", fig.width=11, fig.height=8, echo=FALSE}
+```{r, rating-teaching, dpi=600, fig.cap="Respondents rating of the teaching material (top) and teachers (bottom) in general faceted for each event.", fig.width=11, fig.height=8, echo=FALSE}
 rate_material_plot <- post_surveys %>%
   mutate(How.would.you.rate.the.teaching.material. = factor(How.would.you.rate.the.teaching.material., factor_levels)) %>%
   ggplot(aes(x=How.would.you.rate.the.teaching.material.)) + geom_bar() +
